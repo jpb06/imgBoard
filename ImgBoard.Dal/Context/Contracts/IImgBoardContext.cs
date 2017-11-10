@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Dal.Context.Contracts
 {
-    public interface IImgBoardContext
+    public interface IImgBoardContext : IDbContext
     {
         IDbSet<Category> Categories { get; set; }
         IDbSet<Comment> Comments { get; set; }

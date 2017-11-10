@@ -51,6 +51,28 @@
     <Compile Include="Context\Contracts\IImgBoardContext.cs" />
     <Compile Include="Context\Base\ImgBoardBaseContext.cs" />
     <Compile Include="Context\EndObjects\ImgBoardContext.cs" />
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\ICategoryRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\ICommentRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\IGenericRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\IImageRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\ITagRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Contracts\IUserRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Base\GenericRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Specific\CategoryRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Specific\CommentRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Specific\ImageRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Specific\TagRepository.cs" />
+    <Compile Include="Manipulation\Repositories\Implementation\Specific\UserRepository.cs" />
+    <Compile Include="Manipulation\Repositories\RepositoriesSet.cs" />
+    <Compile Include="Manipulation\Services\Base\BaseService.cs" />
+    <Compile Include="Manipulation\Services\Base\SaveResult.cs" />
+    <Compile Include="Manipulation\Services\Main\Base\BaseMainService.cs" />
+    <Compile Include="Manipulation\Services\Main\Configuration\DataConflictInfo.cs" />
+    <Compile Include="Manipulation\Services\Main\Configuration\OptimisticConcurrency.cs" />
+    <Compile Include="Manipulation\Services\Main\Contracts\IBaseMainService.cs" />
+    <Compile Include="Manipulation\Services\Main\Contracts\IPersistenceService.cs" />
+    <Compile Include="Manipulation\Services\Main\PersistenceService.cs" />
     <Compile Include="Migrations\Production\201711092353492_Init.cs" />
     <Compile Include="Migrations\Production\201711092353492_Init.Designer.cs">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
@@ -58,10 +80,7 @@
     <Compile Include="Migrations\Production\ProdConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manipulation\Repositories\" />
-    <Folder Include="Manipulation\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
