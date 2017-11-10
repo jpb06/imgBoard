@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseModel.cs" />
+    <Compile Include="ErrorsReporting\ErrorReportApplication.cs" />
+    <Compile Include="ErrorsReporting\ErrorReportException.cs" />
     <Compile Include="Main\Category.cs" />
     <Compile Include="Main\Comment.cs" />
     <Compile Include="Main\Image.cs" />

@@ -48,9 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\Contracts\IDbContext.cs" />
+    <Compile Include="Context\Contracts\IErrorsReportingContext.cs" />
     <Compile Include="Context\Contracts\IImgBoardContext.cs" />
     <Compile Include="Context\Base\ImgBoardBaseContext.cs" />
+    <Compile Include="Context\EndObjects\ErrorsReportingContext.cs" />
     <Compile Include="Context\EndObjects\ImgBoardContext.cs" />
+    <Compile Include="Exceptions\CustomTypes\DalException.cs" />
+    <Compile Include="Exceptions\CustomTypes\Specific\DataConflictException.cs" />
+    <Compile Include="Exceptions\DalErrorType.cs" />
     <Compile Include="Exceptions\ExceptionExtensions.cs" />
     <Compile Include="Manipulation\Repositories\Contracts\ICategoryRepository.cs" />
     <Compile Include="Manipulation\Repositories\Contracts\ICommentRepository.cs" />
@@ -67,12 +72,19 @@
     <Compile Include="Manipulation\Repositories\RepositoriesSet.cs" />
     <Compile Include="Manipulation\Services\Base\BaseService.cs" />
     <Compile Include="Manipulation\Services\Base\SaveResult.cs" />
+    <Compile Include="Manipulation\Services\ErrorsReporting\Contracts\IErrorsReportingService.cs" />
+    <Compile Include="Manipulation\Services\ErrorsReporting\ErrorsReportingService.cs" />
     <Compile Include="Manipulation\Services\Main\Base\BaseMainService.cs" />
     <Compile Include="Manipulation\Services\Main\Configuration\DataConflictInfo.cs" />
     <Compile Include="Manipulation\Services\Main\Configuration\OptimisticConcurrency.cs" />
     <Compile Include="Manipulation\Services\Main\Contracts\IBaseMainService.cs" />
     <Compile Include="Manipulation\Services\Main\Contracts\IPersistenceService.cs" />
     <Compile Include="Manipulation\Services\Main\PersistenceService.cs" />
+    <Compile Include="Migrations\ErrorsReporting\201711101411492_Init.cs" />
+    <Compile Include="Migrations\ErrorsReporting\201711101411492_Init.Designer.cs">
+      <DependentUpon>201711101411492_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ErrorsReporting\ErrorsReportingConfiguration.cs" />
     <Compile Include="Migrations\Production\201711092353492_Init.cs" />
     <Compile Include="Migrations\Production\201711092353492_Init.Designer.cs">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
@@ -92,6 +104,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\ErrorsReporting\201711101411492_Init.resx">
+      <DependentUpon>201711101411492_Init.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Production\201711092353492_Init.resx">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
     </EmbeddedResource>

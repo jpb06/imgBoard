@@ -1,4 +1,6 @@
-﻿using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
+﻿using ImgBoard.Dal.Exceptions;
+using ImgBoard.Dal.Exceptions.CustomTypes;
+using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,17 +27,16 @@ namespace ImgBoard.Dal.Manipulation.Services.Base
             if (dataConflictPolicy == DataConflictPolicy.DatabaseWins &&
                 (this.AlteredObjectsCount != 0 || this.AlteredIds.Count() != expectedObjectsCount))
             {
-
-                // TODO : apply proper exceptions segregation & logging
-                throw new Exception("SaveResultPersistenceValidationFailure");
+                throw new DalException(DalErrorType.SaveResultPersistenceValidationFailure,
+                                       "Persistence validation failure");
             }
 
 
             if (dataConflictPolicy == DataConflictPolicy.ClientWins &&
                 (this.AlteredObjectsCount != expectedObjectsCount || this.AlteredIds.Count() != expectedObjectsCount))
             {
-                // TODO : apply proper exceptions segregation & logging
-                throw new Exception("SaveResultPersistenceValidationFailure");
+                throw new DalException(DalErrorType.SaveResultPersistenceValidationFailure,
+                                       "Persistence validation failure");
             }
 
 

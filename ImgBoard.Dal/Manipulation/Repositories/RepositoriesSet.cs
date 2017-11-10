@@ -1,4 +1,6 @@
-﻿using ImgBoard.Dal.Manipulation.Repositories.Contracts;
+﻿using ImgBoard.Dal.Exceptions;
+using ImgBoard.Dal.Exceptions.CustomTypes;
+using ImgBoard.Dal.Manipulation.Repositories.Contracts;
 using ImgBoard.Models.Base;
 using System;
 using System.Collections.Generic;
@@ -53,9 +55,7 @@ namespace ImgBoard.Dal.Manipulation.Repositories
             if (repository == null)
             {
                 string message = string.Format("Instance is missing for {0}", typeof(TModel).FullName);
-
-                // TODO : apply proper exceptions segregation & logging
-                throw new Exception("RepositoriesSetMissingMapping");
+                throw new DalException(DalErrorType.RepositoriesSetMissingMapping, message);
             }
         }
     }

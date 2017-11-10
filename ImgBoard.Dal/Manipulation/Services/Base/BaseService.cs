@@ -1,4 +1,7 @@
 ﻿using ImgBoard.Dal.Context.Contracts;
+using ImgBoard.Dal.Exceptions;
+using ImgBoard.Dal.Exceptions.CustomTypes;
+using ImgBoard.Dal.Exceptions.CustomTypes.Specific;
 using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
 using System;
 using System.Collections.Generic;
@@ -36,23 +39,18 @@ namespace ImgBoard.Dal.Manipulation.Services.Base
                 catch (DbUpdateConcurrencyException exception)
                 {
                     if (policy == DataConflictPolicy.NoPolicy)
-                    {
-                        // TODO : apply proper exceptions segregation & logging
-                        throw new Exception("BaseServiceDataConflictWithNoPolicy");
-                    }
+                        throw new DalException(DalErrorType.BaseServiceDataConflictWithNoPolicy,
+                            "Data conflict (Optimistic concurrency)");
 
                     saveFailed = true;
 
                     DataConflictInfo info = OptimisticConcurrency.ApplyPolicy(policy, exception);
                     if (info != null)
-                    {
-                        // TODO : apply proper exceptions segregation & logging
-                        throw new Exception("BaseServiceDataConflictWithAskClientPolicy");
-                    }
+                        throw new DataConflictException(DalErrorType.BaseServiceDataConflictWithAskClientPolicy, info);
                 }
                 catch (Exception exception)
                 {
-                    // TODO : apply proper exceptions segregation & logging
+                    exception.HandleException();
                 }
 
             } while (saveFailed);
@@ -76,23 +74,18 @@ namespace ImgBoard.Dal.Manipulation.Services.Base
                 catch (DbUpdateConcurrencyException exception)
                 {
                     if (policy == DataConflictPolicy.NoPolicy)
-                    {
-                        // TODO : apply proper exceptions segregation & logging
-                        throw new Exception("BaseServiceDataConflictWithNoPolicy");
-                    }
+                        throw new DalException(DalErrorType.BaseServiceDataConflictWithNoPolicy,
+                               "Data conflict (Optimistic concurrency)");
 
                     saveFailed = true;
 
                     DataConflictInfo info = OptimisticConcurrency.ApplyPolicy(policy, exception);
                     if (info != null)
-                    {
-                        // TODO : apply proper exceptions segregation & logging
-                        throw new Exception("BaseServiceDataConflictWithAskClientPolicy");
-                    }
+                        throw new DataConflictException(DalErrorType.BaseServiceDataConflictWithAskClientPolicy, info);
                 }
                 catch (Exception exception)
                 {
-                    // TODO : apply proper exceptions segregation & logging
+                    exception.HandleException();
                 }
 
             } while (saveFailed);
