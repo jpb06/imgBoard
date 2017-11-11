@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ImgBoard.Dal")]
+[assembly: AssemblyTitle("ImgBoard.Dal.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImgBoard.Dal")]
+[assembly: AssemblyProduct("ImgBoard.Dal.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("88165174-e506-4d1b-a840-deeaaf1373ab")]
+[assembly: Guid("49ddc24f-d133-46fa-9839-0960852abeb5")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
@@ -34,5 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: InternalsVisibleTo("ImgBoard.Dal.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

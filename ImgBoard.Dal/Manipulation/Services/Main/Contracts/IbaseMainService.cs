@@ -1,4 +1,5 @@
-﻿using ImgBoard.Models.Base;
+﻿using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
+using ImgBoard.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Contracts
 {
     public interface IBaseMainService
     {
+        void SetPolicy(DataConflictPolicy policy);
+
         #region Generic Async
         Task<int> CreateAsync<TModel>(TModel model) where TModel : BaseModel;
         Task ModifyAsync<TModel>(TModel model) where TModel : BaseModel;

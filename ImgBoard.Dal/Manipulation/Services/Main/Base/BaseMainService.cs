@@ -24,6 +24,11 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
             this.repositoriesSet = new RepositoriesSet();
         }
 
+        public void SetPolicy(DataConflictPolicy policy)
+        {
+            base.policy = policy;
+        }
+
         #region Generic alteration async
         public async Task<int> CreateAsync<TDBaseModel>(TDBaseModel model)
             where TDBaseModel : BaseModel

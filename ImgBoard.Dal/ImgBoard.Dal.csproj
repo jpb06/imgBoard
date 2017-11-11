@@ -53,6 +53,7 @@
     <Compile Include="Context\Base\ImgBoardBaseContext.cs" />
     <Compile Include="Context\EndObjects\ErrorsReportingContext.cs" />
     <Compile Include="Context\EndObjects\ImgBoardContext.cs" />
+    <Compile Include="Context\EndObjects\ImgBoardTestContext.cs" />
     <Compile Include="Exceptions\CustomTypes\DalException.cs" />
     <Compile Include="Exceptions\CustomTypes\Specific\DataConflictException.cs" />
     <Compile Include="Exceptions\DalErrorType.cs" />
@@ -90,6 +91,11 @@
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Production\ProdConfiguration.cs" />
+    <Compile Include="Migrations\Tests\201711101918099_Init.cs" />
+    <Compile Include="Migrations\Tests\201711101918099_Init.Designer.cs">
+      <DependentUpon>201711101918099_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Tests\TestsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Production\201711092353492_Init.resx">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Tests\201711101918099_Init.resx">
+      <DependentUpon>201711101918099_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
