@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 
 namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
@@ -35,8 +36,12 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
         {
             this.container = new UnityContainer();
 
-            this.container.RegisterType<IDbContext, ErrorsReportingContext>(new HierarchicalLifetimeManager());
-            this.container.RegisterType(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            this.container.RegisterType<IErrorsReportingContext, ErrorsReportingContext>(
+                new HierarchicalLifetimeManager()
+            );
+            this.container.RegisterType(
+                typeof(IGenericRepository<>), typeof(GenericRepository<>),
+                new InjectionConstructor(typeof(IErrorsReportingContext)));
             this.container.RegisterType<IErrorsReportingService, ErrorsReportingService>();
 
             this.dataSet = new PersistentErrorsReportingDataSet();

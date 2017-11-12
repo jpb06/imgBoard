@@ -17,7 +17,7 @@ namespace ImgBoard.Dal.Manipulation.Services.ErrorsReporting
         private IGenericRepository<ErrorReportApplication> applicationsRepository;
         private IGenericRepository<ErrorReportException> exceptionRepository;
 
-        public ErrorsReportingService(IDbContext context,
+        public ErrorsReportingService(IErrorsReportingContext context,
                                       IGenericRepository<ErrorReportApplication> applicationsRespository,
                                       IGenericRepository<ErrorReportException> exceptionsRespository)
             : base(context)

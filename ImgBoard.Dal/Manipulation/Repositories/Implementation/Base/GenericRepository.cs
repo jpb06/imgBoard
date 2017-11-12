@@ -16,7 +16,13 @@ namespace ImgBoard.Dal.Manipulation.Repositories.Implementation.Base
         internal IDbContext context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(IDbContext context)
+        public GenericRepository(IErrorsReportingContext context)
+        {
+            this.context = context;
+            this.dbSet = context.Set<TEntity>();
+        }
+
+        public GenericRepository(IImgBoardContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
