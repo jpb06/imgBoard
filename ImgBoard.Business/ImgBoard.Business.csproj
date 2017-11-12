@@ -73,8 +73,11 @@
   <ItemGroup>
     <Compile Include="Exceptions\BusinessErrorType.cs" />
     <Compile Include="Exposed\Logging.cs" />
+    <Compile Include="Exposed\Persistence.cs" />
     <Compile Include="Internal\Contracts\IErrorsReportingManager.cs" />
+    <Compile Include="Internal\Contracts\IPersistenceManager.cs" />
     <Compile Include="Internal\ErrorsReportingManager.cs" />
+    <Compile Include="Internal\PersistenceManager.cs" />
     <Compile Include="InversionOfControl\IoCConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
