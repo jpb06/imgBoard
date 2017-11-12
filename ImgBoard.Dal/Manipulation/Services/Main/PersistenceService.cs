@@ -29,10 +29,5 @@ namespace ImgBoard.Dal.Manipulation.Services.Main
             base.repositoriesSet.Register<Tag, ITagRepository>(tagRepository);
             base.repositoriesSet.Register<User, IUserRepository>(userRepository);
         }
-
-        public void SetPolicy(DataConflictPolicy policy)
-        {
-            base.policy = policy;
-        }
     }
 }
