@@ -10,17 +10,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
-
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-
-        .starter-template {
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-    </style>
+    @RenderSection("styles", required: false)
 </head>
 <body>
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
@@ -62,20 +52,9 @@
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
 
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown Example
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </div> 
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
