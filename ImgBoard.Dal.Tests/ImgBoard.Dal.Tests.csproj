@@ -96,6 +96,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\ImgBoard.Dal.Models\ImgBoard.Dal.Models.csproj">
+      <Project>{4c8d6f5d-5a70-4c2a-a90f-84f7cc9db85a}</Project>
+      <Name>ImgBoard.Dal.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Dal\ImgBoard.Dal.csproj">
       <Project>{88165174-e506-4d1b-a840-deeaaf1373ab}</Project>
       <Name>ImgBoard.Dal</Name>
@@ -104,9 +108,9 @@
       <Project>{4d26567d-4c3f-4fb8-ba7f-59e2af62ab54}</Project>
       <Name>ImgBoard.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ImgBoard.Shared\ImgBoard.Shared.csproj">
+    <ProjectReference Include="..\ImgBoard.Shared.Tests\ImgBoard.Shared.Tests.csproj">
       <Project>{bd4e5784-01ae-457c-b8fb-04499b16b506}</Project>
-      <Name>ImgBoard.Shared</Name>
+      <Name>ImgBoard.Shared.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

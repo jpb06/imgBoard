@@ -2,7 +2,7 @@
 using ImgBoard.Business.InversionOfControl;
 using ImgBoard.Business.Tests.AssemblyInformation;
 using ImgBoard.Business.Tests.Exceptions;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Database;
 using ImgBoard.Shared.Tests.Data.Database.Primitives.ErrorsReporting;
 using NUnit.Framework;

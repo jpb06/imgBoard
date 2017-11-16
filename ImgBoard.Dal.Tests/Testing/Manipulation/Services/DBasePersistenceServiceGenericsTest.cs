@@ -9,7 +9,7 @@ using ImgBoard.Dal.Manipulation.Repositories.Implementation.Specific;
 using ImgBoard.Dal.Manipulation.Services.Main;
 using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
 using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
-using ImgBoard.Models.Main;
+using ImgBoard.Dal.Models.Main;
 using ImgBoard.Shared.Tests.Data.Database;
 using ImgBoard.Shared.Tests.Data.Database.DataSets;
 using ImgBoard.Shared.Tests.Data.Database.Primitives.Main;
@@ -32,7 +32,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
         private PersistentMainDataSet dataSet;
         private SqlConnection connection;
         private CategoriesSqlHelper categoriesSqlHelper;
-        private Category category;
+        private DbCategory category;
 
         public DBasePersistenceServiceGenericsTest()
         {
@@ -52,7 +52,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
             this.connection = new SqlConnection(DatabaseConfiguration.MainConnectionString);
             this.categoriesSqlHelper = new CategoriesSqlHelper(this.connection);
 
-            this.category = new Category
+            this.category = new DbCategory
             {
                 Title = "Category Title"
             };
@@ -81,7 +81,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                 IBaseMainService service = childContainer.Resolve<IBaseMainService>();
                 service.SetPolicy(DataConflictPolicy.NoPolicy);
 
-                var category = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.First());
+                var category = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.First());
                 category.Title = "User 1 Category Title";
 
                 this.categoriesSqlHelper.ModifyTitle(category.Id, "User 2 Category Title");
@@ -102,7 +102,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                 IBaseMainService service = childContainer.Resolve<IBaseMainService>();
                 service.SetPolicy(DataConflictPolicy.ClientWins);
 
-                var category = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.ElementAt(1));
+                var category = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.ElementAt(1));
                 category.Title = "User 1 Category Title 2";
 
                 this.categoriesSqlHelper.ModifyTitle(category.Id, "User 2 Category Title");
@@ -112,7 +112,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                     await service.ModifyAsync(category);
                 }, Throws.Nothing);
 
-                var updatedCategory = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.ElementAt(1));
+                var updatedCategory = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.ElementAt(1));
 
                 Assert.AreEqual("User 1 Category Title 2", updatedCategory.Title);
             }
@@ -126,7 +126,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                 IBaseMainService service = childContainer.Resolve<IBaseMainService>();
                 service.SetPolicy(DataConflictPolicy.DatabaseWins);
 
-                var category = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.ElementAt(2));
+                var category = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.ElementAt(2));
                 category.Title = "User 1 Category Title 3";
 
                 this.categoriesSqlHelper.ModifyTitle(category.Id, "User 2 Category Title 3");
@@ -136,7 +136,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                     await service.ModifyAsync(category);
                 }, Throws.Nothing);
 
-                var updatedArticle = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.ElementAt(2));
+                var updatedArticle = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.ElementAt(2));
 
                 Assert.AreEqual("User 2 Category Title 3", updatedArticle.Title);
             }
@@ -150,7 +150,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                 IBaseMainService service = childContainer.Resolve<IBaseMainService>();
                 service.SetPolicy(DataConflictPolicy.AskClient);
 
-                var category = await service.GetByIdAsync<Category>(this.dataSet.CategoriesIds.ElementAt(2));
+                var category = await service.GetByIdAsync<DbCategory>(this.dataSet.CategoriesIds.ElementAt(2));
                 category.Title = "User 1 Category Title 4";
 
                 this.categoriesSqlHelper.ModifyTitle(category.Id, "User 2 Category Title 4");
@@ -161,11 +161,11 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Services
                 });
                 Assert.AreEqual(DalErrorType.BaseServiceDataConflictWithAskClientPolicy, dce.errorType);
 
-                Assert.IsInstanceOf(typeof(Category), dce.CurrentValues);
-                Assert.IsInstanceOf(typeof(Category), dce.DatabaseValues);
+                Assert.IsInstanceOf(typeof(DbCategory), dce.CurrentValues);
+                Assert.IsInstanceOf(typeof(DbCategory), dce.DatabaseValues);
 
-                Category currentValues = (Category)dce.CurrentValues;
-                Category databaseValues = (Category)dce.DatabaseValues;
+                DbCategory currentValues = (DbCategory)dce.CurrentValues;
+                DbCategory databaseValues = (DbCategory)dce.DatabaseValues;
 
                 Assert.AreEqual(category.Id, databaseValues.Id);
                 Assert.AreEqual("User 2 Category Title 4", databaseValues.Title);

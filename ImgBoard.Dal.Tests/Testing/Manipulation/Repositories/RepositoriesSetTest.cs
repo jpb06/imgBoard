@@ -6,7 +6,7 @@ using ImgBoard.Dal.Manipulation.Repositories;
 using ImgBoard.Dal.Manipulation.Repositories.Contracts;
 using ImgBoard.Dal.Manipulation.Repositories.Implementation.Base;
 using ImgBoard.Dal.Manipulation.Repositories.Implementation.Specific;
-using ImgBoard.Models.Main;
+using ImgBoard.Dal.Models.Main;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -25,11 +25,11 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         {
             RepositoriesSet repositoriesSet = new RepositoriesSet();
 
-            repositoriesSet.Register<Category, ICategoryRepository>(new CategoryRepository(new Mock<IImgBoardContext>().Object));
+            repositoriesSet.Register<DbCategory, ICategoryRepository>(new CategoryRepository(new Mock<IImgBoardContext>().Object));
 
-            var repository = repositoriesSet.GetGeneric<Category>();
+            var repository = repositoriesSet.GetGeneric<DbCategory>();
 
-            Assert.IsInstanceOf<GenericRepository<Category>>(repository);
+            Assert.IsInstanceOf<GenericRepository<DbCategory>>(repository);
         }
 
         [Test]
@@ -39,10 +39,10 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
 
             DalException ex = Assert.Throws<DalException>(() =>
             {
-                repositoriesSet.GetGeneric<Category>();
+                repositoriesSet.GetGeneric<DbCategory>();
             });
             Assert.That(ex.errorType, Is.EqualTo(DalErrorType.RepositoriesSetMissingMapping));
-            Assert.That(ex.Message, Is.EqualTo("Instance is missing for ImgBoard.Models.Main.Category"));
+            Assert.That(ex.Message, Is.EqualTo("Instance is missing for ImgBoard.Dal.Models.Main.DbCategory"));
         }
 
         [Test]
@@ -50,9 +50,9 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         {
             RepositoriesSet repositoriesSet = new RepositoriesSet();
 
-            repositoriesSet.Register<Category, ICategoryRepository>(new CategoryRepository(new Mock<IImgBoardContext>().Object));
+            repositoriesSet.Register<DbCategory, ICategoryRepository>(new CategoryRepository(new Mock<IImgBoardContext>().Object));
 
-            var repository = repositoriesSet.GetSpecific<Category, ICategoryRepository>();
+            var repository = repositoriesSet.GetSpecific<DbCategory, ICategoryRepository>();
 
             Assert.IsInstanceOf<ICategoryRepository>(repository);
         }
@@ -64,10 +64,10 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
 
             DalException ex = Assert.Throws<DalException>(() =>
             {
-                repositoriesSet.GetGeneric<Category>();
+                repositoriesSet.GetGeneric<DbCategory>();
             });
             Assert.That(ex.errorType, Is.EqualTo(DalErrorType.RepositoriesSetMissingMapping));
-            Assert.That(ex.Message, Is.EqualTo("Instance is missing for ImgBoard.Models.Main.Category"));
+            Assert.That(ex.Message, Is.EqualTo("Instance is missing for ImgBoard.Dal.Models.Main.DbCategory"));
         }
     }
 }

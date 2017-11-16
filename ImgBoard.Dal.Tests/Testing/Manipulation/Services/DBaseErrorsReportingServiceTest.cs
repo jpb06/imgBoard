@@ -6,7 +6,7 @@ using ImgBoard.Dal.Manipulation.Repositories.Contracts;
 using ImgBoard.Dal.Manipulation.Repositories.Implementation.Base;
 using ImgBoard.Dal.Manipulation.Services.ErrorsReporting;
 using ImgBoard.Dal.Manipulation.Services.ErrorsReporting.Contracts;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Database;
 using ImgBoard.Shared.Tests.Data.Database.DataSets;
 using ImgBoard.Shared.Tests.Data.Database.Primitives.ErrorsReporting;

@@ -1,7 +1,7 @@
 ﻿using ImgBoard.Dal.Context.Contracts;
 using ImgBoard.Dal.Context.EndObjects;
 using ImgBoard.Dal.Manipulation.Repositories.Implementation.Base;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.Main;
 using ImgBoard.Models.Main;
 using ImgBoard.Shared.Tests.Data.Database.DataSets;
 using NUnit.Framework;
@@ -18,9 +18,9 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
     public class DBaseGenericRepositoryTest
     {
         private IImgBoardContext context;
-        private GenericRepository<Category> repository;
+        private GenericRepository<DbCategory> repository;
         private PersistentMainDataSet dataSet;
-        private Category addCategory;
+        private DbCategory addCategory;
 
         public DBaseGenericRepositoryTest()
         {
@@ -31,7 +31,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         public void Init()
         {
             this.context = new ImgBoardTestContext();
-            this.repository = new GenericRepository<Category>(this.context);
+            this.repository = new GenericRepository<DbCategory>(this.context);
             this.dataSet.Initialize();
         }
 
@@ -46,7 +46,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test, Order(1)]
         public void Db_Repository_Insert()
         {
-            this.addCategory = new Category
+            this.addCategory = new DbCategory
             {
                 Title = "Category 4"
             };
@@ -72,7 +72,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test, Order(3)]
         public void Db_Repository_GetById()
         {
-            Category category = this.repository.GetById(this.addCategory.Id);
+            DbCategory category = this.repository.GetById(this.addCategory.Id);
 
             Assert.IsNotNull(category);
             Assert.AreEqual(this.addCategory.Title, category.Title);
@@ -81,7 +81,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test]
         public void Db_Repository_GetById_DoesntExist()
         {
-            Category category = this.repository.GetById(0);
+            DbCategory category = this.repository.GetById(0);
 
             Assert.AreEqual(null, category);
         }
@@ -98,7 +98,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test]
         public void Db_Repository_DeleteById()
         {
-            Category category = new Category
+            DbCategory category = new DbCategory
             {
                 Title = "Category to delete"
             };
@@ -109,17 +109,17 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
             this.repository.Delete(category.Id);
             this.context.SaveChanges();
 
-            Category deletedCategory = this.repository.GetById(category.Id);
+            DbCategory deletedCategory = this.repository.GetById(category.Id);
 
             Assert.IsNull(deletedCategory);
         }
 
         [Test]
-        public void Db_Repository_Get_PriceFiltered()
+        public void Db_Repository_Get_Filtered()
         {
-            var categories = this.repository.Get(cat => cat.Id >= 2);
+            var categories = this.repository.Get(cat => cat.Title.Contains("2") || cat.Title.Contains("3"));
 
-            Assert.AreEqual(3, categories.Count());
+            Assert.AreEqual(2, categories.Count());
         }
 
         [Test]
@@ -136,12 +136,12 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test]
         public void Db_Repository_Get_FilteredAndOrdered()
         {
-            var categories = this.repository.Get(filter: art => art.Id >= 2,
+            var categories = this.repository.Get(filter: cat => cat.Title.Contains("2") || cat.Title.Contains("3"),
                                                  orderBy: q => q.OrderByDescending(c => c.Id));
 
-            Assert.AreEqual(3, categories.Count());
+            Assert.AreEqual(2, categories.Count());
             Assert.AreEqual("Test Category 3", categories.First().Title);
-            Assert.AreEqual("Test Category 1", categories.Last().Title);
+            Assert.AreEqual("Test Category 2", categories.Last().Title);
         }
 
         [Test]
@@ -157,7 +157,7 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test, Order(4)]
         public async Task Db_Repository_GetByIdAsync()
         {
-            Category category = await this.repository.GetByIdAsync(this.addCategory.Id);
+            DbCategory category = await this.repository.GetByIdAsync(this.addCategory.Id);
 
             Assert.IsNotNull(category);
             Assert.AreEqual(this.addCategory.Title, category.Title);
@@ -167,17 +167,17 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         [Test]
         public async Task Db_Repository_GetByIdAsync_DoesntExist()
         {
-            Category category = await this.repository.GetByIdAsync(0);
+            DbCategory category = await this.repository.GetByIdAsync(0);
 
             Assert.AreEqual(null, category);
         }
 
         [Test]
-        public async Task Db_Repository_GetAsync_PriceFiltered()
+        public async Task Db_Repository_GetAsync_Filtered()
         {
-            var article = await this.repository.GetAsync(cat => cat.Id >= 2);
+            var article = await this.repository.GetAsync(cat => cat.Title.Contains("2") || cat.Title.Contains("3"));
 
-            Assert.AreEqual(3, article.Count());
+            Assert.AreEqual(2, article.Count());
         }
 
         [Test]
@@ -195,12 +195,12 @@ namespace ImgBoard.Dal.Tests.Testing.Manipulation.Repositories
         public async Task Db_Repository_GetAsync_FilteredAndOrdered()
         {
             var article = await this.repository.GetAsync(
-                filter: cat => cat.Id >= 2,
+                filter: cat => cat.Title.Contains("2") || cat.Title.Contains("3"),
                 orderBy: q => q.OrderByDescending(c => c.Id));
 
-            Assert.AreEqual(3, article.Count());
+            Assert.AreEqual(2, article.Count());
             Assert.AreEqual("Test Category 3", article.First().Title);
-            Assert.AreEqual("Test Category 1", article.Last().Title);
+            Assert.AreEqual("Test Category 2", article.Last().Title);
         }
         #endregion
     }

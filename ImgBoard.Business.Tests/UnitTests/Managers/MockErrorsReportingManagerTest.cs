@@ -1,5 +1,5 @@
 ﻿using ImgBoard.Business.Internal.Contracts;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Mocked;
 using ImgBoard.Shared.Tests.Exceptions;
 using Moq;

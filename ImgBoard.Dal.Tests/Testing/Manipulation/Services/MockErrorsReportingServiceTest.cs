@@ -1,7 +1,7 @@
 ﻿using ImgBoard.Dal.Exceptions;
 using ImgBoard.Dal.Exceptions.CustomTypes;
 using ImgBoard.Dal.Manipulation.Services.ErrorsReporting.Contracts;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Mocked;
 using ImgBoard.Shared.Tests.Exceptions;
 using Moq;
