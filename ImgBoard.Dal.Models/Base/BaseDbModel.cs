@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Models.Base
+namespace ImgBoard.Dal.Models.Base
 {
-    public class BaseModel
+    public class BaseDbModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

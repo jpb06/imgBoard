@@ -1,4 +1,4 @@
-﻿using ImgBoard.Models.Base;
+﻿using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Models.ErrorsReporting
+namespace ImgBoard.Dal.Models.ErrorsReporting
 {
     [Table("Exceptions")]
-    public class ErrorReportException : BaseModel
+    public class ErrorReportException : BaseDbModel
     {
         /* ----------------------------------------------------------*/
         [ForeignKey("InnerException")]

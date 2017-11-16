@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D26567D-4C3F-4FB8-BA7F-59E2AF62AB54}</ProjectGuid>
+    <ProjectGuid>{4C8D6F5D-5A70-4C2A-A90F-84F7CC9DB85A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImgBoard.Models</RootNamespace>
-    <AssemblyName>ImgBoard.Models</AssemblyName>
+    <RootNamespace>ImgBoard.Dal.Models</RootNamespace>
+    <AssemblyName>ImgBoard.Dal.Models</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,17 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main\Category.cs" />
-    <Compile Include="Main\Comment.cs" />
-    <Compile Include="Main\Image.cs" />
-    <Compile Include="Main\Tag.cs" />
-    <Compile Include="Main\User.cs" />
+    <Compile Include="Base\BaseDbModel.cs" />
+    <Compile Include="ErrorsReporting\ErrorReportApplication.cs" />
+    <Compile Include="ErrorsReporting\ErrorReportException.cs" />
+    <Compile Include="Main\DbCategory.cs" />
+    <Compile Include="Main\DbComment.cs" />
+    <Compile Include="Main\DbImage.cs" />
+    <Compile Include="Main\DbTag.cs" />
+    <Compile Include="Main\DbUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
