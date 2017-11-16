@@ -104,6 +104,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImgBoard.Dal.Models\ImgBoard.Dal.Models.csproj">
+      <Project>{4c8d6f5d-5a70-4c2a-a90f-84f7cc9db85a}</Project>
+      <Name>ImgBoard.Dal.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Models\ImgBoard.Models.csproj">
       <Project>{4d26567d-4c3f-4fb8-ba7f-59e2af62ab54}</Project>
       <Name>ImgBoard.Models</Name>

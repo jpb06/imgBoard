@@ -1,5 +1,5 @@
 ﻿using ImgBoard.Dal.Context.Contracts;
-using ImgBoard.Models.Main;
+using ImgBoard.Dal.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,26 +16,26 @@ namespace ImgBoard.Dal.Context.Base
         {
         }
 
-        public virtual IDbSet<Category> Categories { get; set; }
-        public virtual IDbSet<Comment> Comments { get; set; }
-        public virtual IDbSet<Image> Images { get; set; }
-        public virtual IDbSet<Tag> Tags { get; set; }
-        public virtual IDbSet<User> Users { get; set; }
+        public virtual IDbSet<DbCategory> Categories { get; set; }
+        public virtual IDbSet<DbComment> Comments { get; set; }
+        public virtual IDbSet<DbImage> Images { get; set; }
+        public virtual IDbSet<DbTag> Tags { get; set; }
+        public virtual IDbSet<DbUser> Users { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var categoriesModel = modelBuilder.Entity<Category>();
+            var categoriesModel = modelBuilder.Entity<DbCategory>();
             categoriesModel.HasKey(t => t.Id);
             categoriesModel.Property(t => t.RowVersion).IsFixedLength();
 
-            var commentsModel = modelBuilder.Entity<Comment>();
+            var commentsModel = modelBuilder.Entity<DbComment>();
             commentsModel.HasKey(t => t.Id);
             commentsModel.Property(t => t.RowVersion).IsFixedLength();
             commentsModel.HasRequired(t => t.Image).WithMany(t => t.Comments).WillCascadeOnDelete(false);
             commentsModel.HasRequired(t => t.Creator).WithMany(t => t.Comments).WillCascadeOnDelete(false);
 
-            var imagesModel = modelBuilder.Entity<Image>();
+            var imagesModel = modelBuilder.Entity<DbImage>();
             imagesModel.HasKey(t => t.Id);
             imagesModel.Property(t => t.RowVersion).IsFixedLength();
             imagesModel.HasMany(t => t.Tags)
@@ -48,11 +48,11 @@ namespace ImgBoard.Dal.Context.Base
                        });
 
 
-            var tagsModel = modelBuilder.Entity<Tag>();
+            var tagsModel = modelBuilder.Entity<DbTag>();
             tagsModel.HasKey(t => t.Id);
             tagsModel.Property(t => t.RowVersion).IsFixedLength();
 
-            var usersModel = modelBuilder.Entity<User>();
+            var usersModel = modelBuilder.Entity<DbUser>();
             usersModel.HasKey(t => t.Id);
             usersModel.Property(t => t.RowVersion).IsFixedLength();
         }

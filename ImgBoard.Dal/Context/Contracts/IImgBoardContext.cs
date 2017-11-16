@@ -1,4 +1,4 @@
-﻿using ImgBoard.Models.Main;
+﻿using ImgBoard.Dal.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,10 +10,10 @@ namespace ImgBoard.Dal.Context.Contracts
 {
     public interface IImgBoardContext : IDbContext
     {
-        IDbSet<Category> Categories { get; set; }
-        IDbSet<Comment> Comments { get; set; }
-        IDbSet<Image> Images { get; set; }
-        IDbSet<Tag> Tags { get; set; }
-        IDbSet<User> Users { get; set; }
+        IDbSet<DbCategory> Categories { get; set; }
+        IDbSet<DbComment> Comments { get; set; }
+        IDbSet<DbImage> Images { get; set; }
+        IDbSet<DbTag> Tags { get; set; }
+        IDbSet<DbUser> Users { get; set; }
     }
 }

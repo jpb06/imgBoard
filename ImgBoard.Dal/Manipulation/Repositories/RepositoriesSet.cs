@@ -1,7 +1,7 @@
 ﻿using ImgBoard.Dal.Exceptions;
 using ImgBoard.Dal.Exceptions.CustomTypes;
 using ImgBoard.Dal.Manipulation.Repositories.Contracts;
-using ImgBoard.Models.Base;
+using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +20,14 @@ namespace ImgBoard.Dal.Manipulation.Repositories
         }
 
         public void Register<TModel, TRepository>(TRepository instance)
-            where TModel : BaseModel
+            where TModel : BaseDbModel
             where TRepository : class, IGenericRepository<TModel>
         {
             this.repositories.Add(typeof(TModel), instance);
         }
 
         public IGenericRepository<TModel> GetGeneric<TModel>()
-            where TModel : BaseModel
+            where TModel : BaseDbModel
         {
             object repository;
             this.repositories.TryGetValue(typeof(TModel), out repository);
@@ -38,7 +38,7 @@ namespace ImgBoard.Dal.Manipulation.Repositories
         }
 
         public TSpecific GetSpecific<TModel, TSpecific>()
-            where TModel : BaseModel
+            where TModel : BaseDbModel
             where TSpecific : class, IGenericRepository<TModel>
         {
             object repository;
@@ -50,7 +50,7 @@ namespace ImgBoard.Dal.Manipulation.Repositories
         }
 
         private void CheckRepository<TModel>(object repository)
-            where TModel : BaseModel
+            where TModel : BaseDbModel
         {
             if (repository == null)
             {

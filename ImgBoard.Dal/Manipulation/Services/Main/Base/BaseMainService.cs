@@ -3,7 +3,7 @@ using ImgBoard.Dal.Manipulation.Repositories;
 using ImgBoard.Dal.Manipulation.Services.Base;
 using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
 using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
-using ImgBoard.Models.Base;
+using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
 
         #region Generic alteration async
         public async Task<int> CreateAsync<TDBaseModel>(TDBaseModel model)
-            where TDBaseModel : BaseModel
+            where TDBaseModel : BaseDbModel
         {
             var repository = this.repositoriesSet.GetGeneric<TDBaseModel>();
             repository.Insert(model);
@@ -45,7 +45,7 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
         }
 
         public async Task ModifyAsync<TDBaseModel>(TDBaseModel model)
-            where TDBaseModel : BaseModel
+            where TDBaseModel : BaseDbModel
         {
             var repository = this.repositoriesSet.GetGeneric<TDBaseModel>();
             repository.Update(model);
@@ -57,7 +57,7 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
         }
 
         public async Task DeleteAsync<TDBaseModel>(TDBaseModel model)
-            where TDBaseModel : BaseModel
+            where TDBaseModel : BaseDbModel
         {
             var repository = this.repositoriesSet.GetGeneric<TDBaseModel>();
             repository.Delete(model);
@@ -71,7 +71,7 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
 
         #region Data retrieval
         public async Task<TDBaseModel> GetByIdAsync<TDBaseModel>(int id)
-            where TDBaseModel : BaseModel
+            where TDBaseModel : BaseDbModel
         {
             var repository = this.repositoriesSet.GetGeneric<TDBaseModel>();
             TDBaseModel model = await repository.GetByIdAsync(id);
@@ -82,7 +82,7 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Base
         public async Task<List<TDBaseModel>> GetAsync<TDBaseModel>(
             Expression<Func<TDBaseModel, bool>> filter = null,
             Func<IQueryable<TDBaseModel>, IOrderedQueryable<TDBaseModel>> orderBy = null,
-            string includeProperties = "") where TDBaseModel : BaseModel
+            string includeProperties = "") where TDBaseModel : BaseDbModel
         {
             var repository = this.repositoriesSet.GetGeneric<TDBaseModel>();
             IEnumerable<TDBaseModel> result = await repository.GetAsync(filter, orderBy, includeProperties);

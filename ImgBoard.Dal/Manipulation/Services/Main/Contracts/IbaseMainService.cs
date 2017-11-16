@@ -1,5 +1,5 @@
 ﻿using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
-using ImgBoard.Models.Base;
+using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +14,15 @@ namespace ImgBoard.Dal.Manipulation.Services.Main.Contracts
         void SetPolicy(DataConflictPolicy policy);
 
         #region Generic Async
-        Task<int> CreateAsync<TModel>(TModel model) where TModel : BaseModel;
-        Task ModifyAsync<TModel>(TModel model) where TModel : BaseModel;
-        Task DeleteAsync<TModel>(TModel model) where TModel : BaseModel;
+        Task<int> CreateAsync<TModel>(TModel model) where TModel : BaseDbModel;
+        Task ModifyAsync<TModel>(TModel model) where TModel : BaseDbModel;
+        Task DeleteAsync<TModel>(TModel model) where TModel : BaseDbModel;
 
-        Task<TModel> GetByIdAsync<TModel>(int id) where TModel : BaseModel;
+        Task<TModel> GetByIdAsync<TModel>(int id) where TModel : BaseDbModel;
         Task<List<TModel>> GetAsync<TModel>(
             Expression<Func<TModel, bool>> filter = null,
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
-            string includeProperties = "") where TModel : BaseModel;
+            string includeProperties = "") where TModel : BaseDbModel;
         #endregion
     }
 }

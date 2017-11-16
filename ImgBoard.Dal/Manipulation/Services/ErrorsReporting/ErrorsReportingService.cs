@@ -3,7 +3,7 @@ using ImgBoard.Dal.Manipulation.Repositories.Contracts;
 using ImgBoard.Dal.Manipulation.Services.Base;
 using ImgBoard.Dal.Manipulation.Services.ErrorsReporting.Contracts;
 using ImgBoard.Dal.Manipulation.Services.Main.Configuration;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using System;
 using System.Collections.Generic;
 using System.Linq;

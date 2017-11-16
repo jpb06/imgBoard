@@ -1,6 +1,6 @@
 ﻿using ImgBoard.Dal.Context.Contracts;
 using ImgBoard.Dal.Manipulation.Repositories.Contracts;
-using ImgBoard.Models.Base;
+using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Dal.Manipulation.Repositories.Implementation.Base
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseModel
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseDbModel
     {
         internal IDbContext context;
         internal DbSet<TEntity> dbSet;

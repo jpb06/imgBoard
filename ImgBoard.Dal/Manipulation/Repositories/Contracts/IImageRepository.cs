@@ -1,4 +1,4 @@
-﻿using ImgBoard.Models.Main;
+﻿using ImgBoard.Dal.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Dal.Manipulation.Repositories.Contracts
 {
-    public interface IImageRepository : IGenericRepository<Image>
+    public interface IImageRepository : IGenericRepository<DbImage>
     {
     }
 }

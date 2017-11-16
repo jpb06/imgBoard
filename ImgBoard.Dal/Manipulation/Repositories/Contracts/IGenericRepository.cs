@@ -1,4 +1,4 @@
-﻿using ImgBoard.Models.Base;
+﻿using ImgBoard.Dal.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Dal.Manipulation.Repositories.Contracts
 {
-    public interface IGenericRepository<TEntity> where TEntity : BaseModel
+    public interface IGenericRepository<TEntity> where TEntity : BaseDbModel
     {
         IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters);
         IEnumerable<TEntity> Get(
