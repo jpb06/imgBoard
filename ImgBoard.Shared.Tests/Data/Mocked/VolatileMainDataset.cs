@@ -1,4 +1,4 @@
-﻿using ImgBoard.Models.Main;
+﻿using ImgBoard.Dal.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +9,19 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
 {
     public class VolatileMainDataset
     {
-        public List<Category> Categories { get; set; }
-        public List<Comment> Comments { get; set; }
-        public List<Image> Images { get; set; }
-        public List<Tag> Tags { get; set; }
-        public List<User> Users { get; set; }
+        public List<DbCategory> Categories { get; set; }
+        public List<DbComment> Comments { get; set; }
+        public List<DbImage> Images { get; set; }
+        public List<DbTag> Tags { get; set; }
+        public List<DbUser> Users { get; set; }
 
         public VolatileMainDataset()
         {
-            this.Categories = new List<Category>();
-            this.Comments = new List<Comment>();
-            this.Images = new List<Image>();
-            this.Tags = new List<Tag>();
-            this.Users = new List<User>();
+            this.Categories = new List<DbCategory>();
+            this.Comments = new List<DbComment>();
+            this.Images = new List<DbImage>();
+            this.Tags = new List<DbTag>();
+            this.Users = new List<DbUser>();
 
             this.Populate();
         }
@@ -29,33 +29,33 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
         public void Populate()
         {
             #region Articles
-            this.Categories.AddRange(new List<Category>()
+            this.Categories.AddRange(new List<DbCategory>()
             {
-                new Category
+                new DbCategory
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 1, 
                     Title = "Category 1"
                 },
-                new Category
+                new DbCategory
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 2,
                     Title = "Category 2"
                 },
-                new Category
+                new DbCategory
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 3,
                     Title = "Category 3"
                 },
-                new Category
+                new DbCategory
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 4,
                     Title = "Category 4"
                 },
-                new Category
+                new DbCategory
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 5,

@@ -7,8 +7,8 @@
     <ProjectGuid>{BD4E5784-01AE-457C-B8FB-04499B16B506}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImgBoard.Shared</RootNamespace>
-    <AssemblyName>ImgBoard.Shared</AssemblyName>
+    <RootNamespace>ImgBoard.Shared.Tests</RootNamespace>
+    <AssemblyName>ImgBoard.Shared.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,20 +42,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Data\Database\DatabaseConfiguration.cs" />
-    <Compile Include="Tests\Data\Database\DataSets\PersistentErrorsReportingDataSet.cs" />
-    <Compile Include="Tests\Data\Database\DataSets\PersistentMainDataSet.cs" />
-    <Compile Include="Tests\Data\Database\Primitives\ErrorsReporting\ApplicationsSqlHelper.cs" />
-    <Compile Include="Tests\Data\Database\Primitives\Main\CategoriesSqlHelper.cs" />
-    <Compile Include="Tests\Data\Database\Primitives\ErrorsReporting\ExceptionsSqlHelper.cs" />
-    <Compile Include="Tests\Data\Database\Primitives\Main\ImagesSqlHelper.cs" />
-    <Compile Include="Tests\Data\Database\Primitives\Main\UsersSqlHelper.cs" />
-    <Compile Include="Tests\Data\Mocked\VolatileMainDataset.cs" />
-    <Compile Include="Tests\Data\Mocked\VolatileErrorsReportingDataset.cs" />
-    <Compile Include="Tests\Exceptions\ExceptionGenerator.cs" />
+    <Compile Include="Data\Database\DatabaseConfiguration.cs" />
+    <Compile Include="Data\Database\DataSets\PersistentErrorsReportingDataSet.cs" />
+    <Compile Include="Data\Database\DataSets\PersistentMainDataSet.cs" />
+    <Compile Include="Data\Database\Primitives\ErrorsReporting\ApplicationsSqlHelper.cs" />
+    <Compile Include="Data\Database\Primitives\Main\CategoriesSqlHelper.cs" />
+    <Compile Include="Data\Database\Primitives\ErrorsReporting\ExceptionsSqlHelper.cs" />
+    <Compile Include="Data\Database\Primitives\Main\ImagesSqlHelper.cs" />
+    <Compile Include="Data\Database\Primitives\Main\UsersSqlHelper.cs" />
+    <Compile Include="Data\Mocked\VolatileMainDataset.cs" />
+    <Compile Include="Data\Mocked\VolatileErrorsReportingDataset.cs" />
+    <Compile Include="Exceptions\ExceptionGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\ImgBoard.Dal.Models\ImgBoard.Dal.Models.csproj">
+      <Project>{4c8d6f5d-5a70-4c2a-a90f-84f7cc9db85a}</Project>
+      <Name>ImgBoard.Dal.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Models\ImgBoard.Models.csproj">
       <Project>{4d26567d-4c3f-4fb8-ba7f-59e2af62ab54}</Project>
       <Name>ImgBoard.Models</Name>
