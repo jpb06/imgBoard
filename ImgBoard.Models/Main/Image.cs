@@ -17,6 +17,7 @@ namespace ImgBoard.Models.Main
         public string Name { get; set; }
         public string Description { get; set; }
         public Guid FileId { get; set; }
+        public string FileExtension { get; set; }
         //--------------------------------------------
         public Category Category { get; set; }
         public User Uploader { get; set; }
