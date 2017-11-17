@@ -104,6 +104,10 @@
       <Project>{88165174-e506-4d1b-a840-deeaaf1373ab}</Project>
       <Name>ImgBoard.Dal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ImgBoard.Framework\ImgBoard.Framework.csproj">
+      <Project>{3a729b2b-8df3-4e69-a3be-a72855d5b36f}</Project>
+      <Name>ImgBoard.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Models\ImgBoard.Models.csproj">
       <Project>{4d26567d-4c3f-4fb8-ba7f-59e2af62ab54}</Project>
       <Name>ImgBoard.Models</Name>

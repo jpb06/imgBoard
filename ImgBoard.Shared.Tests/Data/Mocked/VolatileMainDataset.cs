@@ -63,6 +63,169 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                 },
             });
             #endregion
+
+            #region Users
+            this.Users.AddRange(new List<DbUser>()
+            {
+                new DbUser
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 1,
+                    Login = "a",
+                    Password = "a",
+                    UserName = "User A"
+                },
+                new DbUser
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 2,
+                    Login = "b",
+                    Password = "b",
+                    UserName = "User B"
+                }
+            });
+            #endregion
+
+            #region Images
+            this.Images.AddRange(new List<DbImage>()
+            {
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 1,
+                    IdUploader = 1,
+                    IdCategory = 1,
+                    Name = "Image 1 name",
+                    Description = "Image 1 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 2,
+                    IdUploader = 1,
+                    IdCategory = 1,
+                    Name = "Image 2 name",
+                    Description = "Image 2 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 3,
+                    IdUploader = 1,
+                    IdCategory = 1,
+                    Name = "Image 3 name",
+                    Description = null,
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 4,
+                    IdUploader = 1,
+                    IdCategory = 1,
+                    Name = null,
+                    Description = null,
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 5,
+                    IdUploader = 2,
+                    IdCategory = 1,
+                    Name = "Image 5 name",
+                    Description = "Image 5 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 6,
+                    IdUploader = 2,
+                    IdCategory = 1,
+                    Name = "Image 5 name",
+                    Description = null,
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 7,
+                    IdUploader = 2,
+                    IdCategory = 2,
+                    Name = "Image 7 name",
+                    Description = "Image 7 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 8,
+                    IdUploader = 2,
+                    IdCategory = 3,
+                    Name = "Image 8 name",
+                    Description = "Image 8 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 9,
+                    IdUploader = 2,
+                    IdCategory = 3,
+                    Name = "Image 9 name",
+                    Description = "Image 9 description",
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 10,
+                    IdUploader = 2,
+                    IdCategory = 3,
+                    Name = "Image 8 name",
+                    Description = null,
+                    FileId = Guid.NewGuid()
+                },
+                new DbImage
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 11,
+                    IdUploader = 2,
+                    IdCategory = 3,
+                    Name = null,
+                    Description = null,
+                    FileId = Guid.NewGuid()
+                }
+            });
+
+            this.Tags.AddRange(new List<DbTag>()
+            {
+                new DbTag
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 1,
+                    Name = "Super",
+                    Images = this.Images.Where(el => el.Id % 2 == 0).ToList()
+                },
+                new DbTag
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 2,
+                    Name = "Meh",
+                    Images = this.Images.Where(el => el.Id % 2 == 1).ToList()
+                },
+                new DbTag
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 3,
+                    Name = "Blah",
+                    Images = this.Images.Where(el => el.Id > 10).ToList()
+                },
+            });
+            #endregion
         }
     }
 }

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Database\Primitives\Main\ImagesTagsSqlHelper.cs" />
+    <Compile Include="Data\Database\Primitives\Main\TagsSqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Database\DatabaseConfiguration.cs" />
     <Compile Include="Data\Database\DataSets\PersistentErrorsReportingDataSet.cs" />

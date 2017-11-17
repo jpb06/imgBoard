@@ -20,9 +20,9 @@ namespace ImgBoard.Shared.Tests.Data.Database.Primitives.Main
         {
             SqlCommand command = new SqlCommand("INSERT INTO [dbo].[Images] ([IdCategory], [IdUploader], [Name], [Description], [FileId]) " +
                                                 "output inserted.Id VALUES (@idCategory, @idUser, @name, @description, @fileId);", connection);
-            command.Parameters.AddWithValue("@idCategory", idCategory);
+            command.Parameters.AddWithValue("@idCategory", idCategory ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@idUser", idUser);
-            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@name", name ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@description", description ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@fileId", fileId);
             return (int)command.ExecuteScalar();
@@ -34,9 +34,9 @@ namespace ImgBoard.Shared.Tests.Data.Database.Primitives.Main
                                                 "SET [IdCategory] = @idCategory, [IdUploader] = @idUser, [Name] = @name, [Description] = @description, [FileId] = @fileId " +
                                                 "WHERE [Id] = @id;", connection);
             command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@idCategory", idCategory);
+            command.Parameters.AddWithValue("@idCategory", idCategory ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@idUser", idUser);
-            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@name", name ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@description", description ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@fileId", fileId);
             command.ExecuteNonQuery();
