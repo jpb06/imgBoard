@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImgBoard.Framework.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Dal.Exceptions.CustomTypes
 {
-    public class DalException : Exception
+    public class DalException : BaseException
     {
-        public string errorType;
-
-        public DalException(string errorType, string message) : base(message)
+        public DalException(string errorType, string message = null) : base(errorType, message)
         {
-            this.errorType = errorType;
         }
     }
 }
