@@ -20,7 +20,7 @@ using Unity.Lifetime;
 
 namespace ImgBoard.Business.InversionOfControl
 {
-    internal static class IoCConfiguration
+    public static class IoCConfiguration
     {
         public static readonly UnityContainer container = new UnityContainer();
 
