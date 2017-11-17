@@ -28,6 +28,10 @@ namespace ImgBoard.Dal.Models.Main
         [Required]
         public Guid FileId { get; set; }
 
+        [Required]
+        [StringLength(5)]
+        public string FileExtension { get; set; }
+
         /* ----------------------------------------------------------*/
         public virtual DbCategory Category { get; set; }
         public virtual DbUser Uploader { get; set; }

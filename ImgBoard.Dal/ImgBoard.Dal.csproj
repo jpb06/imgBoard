@@ -90,10 +90,18 @@
     <Compile Include="Migrations\Production\201711092353492_Init.Designer.cs">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Production\201711171459531_Adding_Image.FileExtension.cs" />
+    <Compile Include="Migrations\Production\201711171459531_Adding_Image.FileExtension.Designer.cs">
+      <DependentUpon>201711171459531_Adding_Image.FileExtension.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Production\ProdConfiguration.cs" />
     <Compile Include="Migrations\Tests\201711101918099_Init.cs" />
     <Compile Include="Migrations\Tests\201711101918099_Init.Designer.cs">
       <DependentUpon>201711101918099_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Tests\201711171518181_Adding_Image.FileExtension.cs" />
+    <Compile Include="Migrations\Tests\201711171518181_Adding_Image.FileExtension.Designer.cs">
+      <DependentUpon>201711171518181_Adding_Image.FileExtension.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Tests\TestsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,8 +132,14 @@
     <EmbeddedResource Include="Migrations\Production\201711092353492_Init.resx">
       <DependentUpon>201711092353492_Init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Production\201711171459531_Adding_Image.FileExtension.resx">
+      <DependentUpon>201711171459531_Adding_Image.FileExtension.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Tests\201711101918099_Init.resx">
       <DependentUpon>201711101918099_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Tests\201711171518181_Adding_Image.FileExtension.resx">
+      <DependentUpon>201711171518181_Adding_Image.FileExtension.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

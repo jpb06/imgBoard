@@ -61,7 +61,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = null,
                 Description = null,
-                FileId = new Guid("1be96b96ce194f1ab2bc54db0c269df9")
+                FileId = new Guid("1be96b96ce194f1ab2bc54db0c269df9"),
+                FileExtension = "png"
             };
             var image2 = new DbImage
             {
@@ -70,7 +71,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = null,
                 Description = null,
-                FileId = new Guid("0c85e4d2fa1443fbaabaa069aa7879f3")
+                FileId = new Guid("0c85e4d2fa1443fbaabaa069aa7879f3"),
+                FileExtension = "png"
             };
             var image3 = new DbImage
             {
@@ -79,7 +81,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Some name",
                 Description = null,
-                FileId = new Guid("e7f2cd1471bc4a3ab64ad5dfa4774b64")
+                FileId = new Guid("e7f2cd1471bc4a3ab64ad5dfa4774b64"),
+                FileExtension = "png"
             };
             var image4 = new DbImage
             {
@@ -88,7 +91,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Some cool name",
                 Description = null,
-                FileId = new Guid("e2eb8ffbfc9542c3911ab53c8dbd1da9")
+                FileId = new Guid("e2eb8ffbfc9542c3911ab53c8dbd1da9"),
+                FileExtension = "png"
             };
             var image5 = new DbImage
             {
@@ -97,7 +101,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = "Some description",
-                FileId = new Guid("5d02a31ac3b74a219c72750bcbe683bd")
+                FileId = new Guid("5d02a31ac3b74a219c72750bcbe683bd"),
+                FileExtension = "png"
             };
             // cat 1
             var image6 = new DbImage
@@ -107,7 +112,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Something",
                 Description = "Something cool",
-                FileId = new Guid("0974ed5725964ad0b71c65314c79bff3")
+                FileId = new Guid("0974ed5725964ad0b71c65314c79bff3"),
+                FileExtension = "png"
             };
             var image7 = new DbImage
             {
@@ -116,7 +122,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Blabla",
                 Description = null,
-                FileId = new Guid("7fdb4ad242124b07b7c16b772066606f")
+                FileId = new Guid("7fdb4ad242124b07b7c16b772066606f"),
+                FileExtension = "png"
             };
             var image8 = new DbImage
             {
@@ -125,7 +132,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Nono",
                 Description = "Yolo",
-                FileId = new Guid("1697cdbe47134c64a802446724594b5b")
+                FileId = new Guid("1697cdbe47134c64a802446724594b5b"),
+                FileExtension = "png"
             };
             var image9 = new DbImage
             {
@@ -134,7 +142,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = null,
                 Description = "Super cool",
-                FileId = new Guid("d8e7e1ad6810461ca5e888215eee456a")
+                FileId = new Guid("d8e7e1ad6810461ca5e888215eee456a"),
+                FileExtension = "png"
             };
             var image10 = new DbImage
             {
@@ -143,7 +152,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Ahaha",
                 Description = null,
-                FileId = new Guid("2749a186cda74da9a090fad2db1aa1ed")
+                FileId = new Guid("2749a186cda74da9a090fad2db1aa1ed"),
+                FileExtension = "png"
             };
 
             var image11 = new DbImage
@@ -153,7 +163,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Not cool",
                 Description = "Yes",
-                FileId = new Guid("0bd69a48caa4407899283251a2c7aa62")
+                FileId = new Guid("0bd69a48caa4407899283251a2c7aa62"),
+                FileExtension = "png"
             };
             var image12 = new DbImage
             {
@@ -162,7 +173,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Meh",
                 Description = null,
-                FileId = new Guid("d68a9e301fc64f5c93a095d624617be7")
+                FileId = new Guid("d68a9e301fc64f5c93a095d624617be7"),
+                FileExtension = "jpg"
             };
             var image13 = new DbImage
             {
@@ -171,7 +183,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Gah",
                 Description = null,
-                FileId = new Guid("45c6107002384fad81649c027ddde337")
+                FileId = new Guid("45c6107002384fad81649c027ddde337"),
+                FileExtension = "png"
             };
             var image14 = new DbImage
             {
@@ -180,7 +193,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Ahaha",
                 Description = "Super",
-                FileId = new Guid("fefcfdf503b04350a5c0ccd6e41c0088")
+                FileId = new Guid("fefcfdf503b04350a5c0ccd6e41c0088"),
+                FileExtension = "png"
             };
             var image15 = new DbImage
             {
@@ -189,7 +203,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = null,
-                FileId = new Guid("3e6c20cc95c34c8cabb436453a3fa476")
+                FileId = new Guid("3e6c20cc95c34c8cabb436453a3fa476"),
+                FileExtension = "png"
             };
             var image16 = new DbImage
             {
@@ -198,7 +213,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = "Ouah",
-                FileId = new Guid("8855611b7bff43c1a8c5e3d42c2ae0c7")
+                FileId = new Guid("8855611b7bff43c1a8c5e3d42c2ae0c7"),
+                FileExtension = "png"
             };
             var image17 = new DbImage
             {
@@ -207,7 +223,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's a title",
                 Description = "That's great",
-                FileId = new Guid("db7dc17917344372b27ec4508fb1ea85")
+                FileId = new Guid("db7dc17917344372b27ec4508fb1ea85"),
+                FileExtension = "png"
             };
             // cat 2
             var image18 = new DbImage
@@ -217,7 +234,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Lalala",
                 Description = "That's a rather long description",
-                FileId = new Guid("14f22be857ab433bb20e2a91538e9931")
+                FileId = new Guid("14f22be857ab433bb20e2a91538e9931"),
+                FileExtension = "png"
             };
             var image19 = new DbImage
             {
@@ -226,7 +244,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Not good",
                 Description = "Nope nope nope",
-                FileId = new Guid("02f4340c01e14e90844a165ab8027fe1")
+                FileId = new Guid("02f4340c01e14e90844a165ab8027fe1"),
+                FileExtension = "png"
             };
             var image20 = new DbImage
             {
@@ -235,7 +254,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Something",
                 Description = "That's a rather long description, like really long",
-                FileId = new Guid("2dd1b1661f1d45ceb4aa648dd2e135cb")
+                FileId = new Guid("2dd1b1661f1d45ceb4aa648dd2e135cb"),
+                FileExtension = "png"
             };
             var image21 = new DbImage
             {
@@ -244,7 +264,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "That's the id 21",
                 Description = null,
-                FileId = new Guid("f316398a86d84f139b7146565e50e0e6")
+                FileId = new Guid("f316398a86d84f139b7146565e50e0e6"),
+                FileExtension = "png"
             };
             var image22 = new DbImage
             {
@@ -253,7 +274,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "That's the id 22",
                 Description = null,
-                FileId = new Guid("ed7fd773ef0f4ecca0c67bebe23359da")
+                FileId = new Guid("ed7fd773ef0f4ecca0c67bebe23359da"),
+                FileExtension = "png"
             };
             var image23 = new DbImage
             {
@@ -262,7 +284,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = null,
                 Description = null,
-                FileId = new Guid("6e11274767b14b6895174d44e7b2b0fe")
+                FileId = new Guid("6e11274767b14b6895174d44e7b2b0fe"),
+                FileExtension = "jpg"
             };
             var image24 = new DbImage
             {
@@ -271,7 +294,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Test",
                 Description = null,
-                FileId = new Guid("e765abae7db941b5bbf605be6102ecaa")
+                FileId = new Guid("e765abae7db941b5bbf605be6102ecaa"),
+                FileExtension = "png"
             };
 
             var image25 = new DbImage
@@ -281,7 +305,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 25",
                 Description = "Description",
-                FileId = new Guid("6663128d864045c3ab6b70d8b6d80270")
+                FileId = new Guid("6663128d864045c3ab6b70d8b6d80270"),
+                FileExtension = "png"
             };
             var image26 = new DbImage
             {
@@ -290,7 +315,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 26",
                 Description = "nghhh",
-                FileId = new Guid("5c68ca911ace45049997365938e1bafa")
+                FileId = new Guid("5c68ca911ace45049997365938e1bafa"),
+                FileExtension = "png"
             };
             var image27 = new DbImage
             {
@@ -299,7 +325,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 27",
                 Description = "That's a rather long description like really super horribly long like is this really necessary stop it now",
-                FileId = new Guid("9b3702bb5598472dab5408d49c0c2987")
+                FileId = new Guid("9b3702bb5598472dab5408d49c0c2987"),
+                FileExtension = "png"
             };
             var image28 = new DbImage
             {
@@ -308,7 +335,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 28",
                 Description = "Bored",
-                FileId = new Guid("5f153307e70c477491445a9946b118db")
+                FileId = new Guid("5f153307e70c477491445a9946b118db"),
+                FileExtension = "png"
             };
             var image29 = new DbImage
             {
@@ -317,7 +345,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 29",
                 Description = "Yololo",
-                FileId = new Guid("ed0303c101ca46dba617cad442d60331")
+                FileId = new Guid("ed0303c101ca46dba617cad442d60331"),
+                FileExtension = "png"
             };
             var image30 = new DbImage
             {
@@ -326,7 +355,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "a",
                 Description = "desc",
-                FileId = new Guid("5466bcea687c41bbb70ecfb4309a61f3")
+                FileId = new Guid("5466bcea687c41bbb70ecfb4309a61f3"),
+                FileExtension = "jpg"
             };
             var image31 = new DbImage
             {
@@ -335,7 +365,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "blah",
                 Description = "not",
-                FileId = new Guid("ba05b9d7ee1145dca93834cedd85c7a1")
+                FileId = new Guid("ba05b9d7ee1145dca93834cedd85c7a1"),
+                FileExtension = "jpg"
             };
             var image32 = new DbImage
             {
@@ -344,7 +375,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "That's image 32",
                 Description = null,
-                FileId = new Guid("34855651602d4fa7889326a22212ff70")
+                FileId = new Guid("34855651602d4fa7889326a22212ff70"),
+                FileExtension = "png"
             };
             var image33 = new DbImage
             {
@@ -353,7 +385,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = "Description for image 33",
-                FileId = new Guid("b0b37c95a8334ee68946b10f8738e767")
+                FileId = new Guid("b0b37c95a8334ee68946b10f8738e767"),
+                FileExtension = "png"
             };
             var image34 = new DbImage
             {
@@ -362,7 +395,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = "Description for image 34",
-                FileId = new Guid("35696e783af746ec9a4ed862ebc59620")
+                FileId = new Guid("35696e783af746ec9a4ed862ebc59620"),
+                FileExtension = "jpg"
             };
             var image35 = new DbImage
             {
@@ -371,7 +405,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Something something something",
                 Description = "what?",
-                FileId = new Guid("0d8de8d2c57e47a4959841f409cca22f")
+                FileId = new Guid("0d8de8d2c57e47a4959841f409cca22f"),
+                FileExtension = "jpg"
             };
             var image36 = new DbImage
             {
@@ -380,7 +415,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = null,
-                FileId = new Guid("98f7e09d0363492397a1c16e88015909")
+                FileId = new Guid("98f7e09d0363492397a1c16e88015909"),
+                FileExtension = "png"
             };
             var image37 = new DbImage
             {
@@ -389,7 +425,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = null,
-                FileId = new Guid("743ec8da043349db9c6a768a2db5fec4")
+                FileId = new Guid("743ec8da043349db9c6a768a2db5fec4"),
+                FileExtension = "png"
             };
             var image38 = new DbImage
             {
@@ -398,7 +435,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Lili",
                 Description = "originality",
-                FileId = new Guid("3ebcb683bd0542f9b5959ea0972a409f")
+                FileId = new Guid("3ebcb683bd0542f9b5959ea0972a409f"),
+                FileExtension = "jpg"
             };
             var image39 = new DbImage
             {
@@ -407,7 +445,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Stop",
                 Description = "That's a description",
-                FileId = new Guid("0918d9738bff40008a64fdbff5bb3eee")
+                FileId = new Guid("0918d9738bff40008a64fdbff5bb3eee"),
+                FileExtension = "png"
             };
             var image40 = new DbImage
             {
@@ -416,7 +455,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 1,
                 Name = "Huge",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere non magna a luctus. Suspendisse gravida ipsum eu metus dapibus bibendum. Nunc dapibus odio turpis, in maximus nisl hendrerit id. Integer malesuada pharetra nibh, eget cursus sapien molestie nec. Nulla blandit tortor augue, et consectetur lectus egestas sed. Pellentesque blandit consequat euismod. In at feugiat nulla, vel tempor urna. Proin varius, turpis non viverra venenatis",
-                FileId = new Guid("659eb8e26fe140cebd30a52e1378efbe")
+                FileId = new Guid("659eb8e26fe140cebd30a52e1378efbe"),
+                FileExtension = "png"
             };
             var image41 = new DbImage
             {
@@ -425,7 +465,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = null,
                 Description = null,
-                FileId = new Guid("69f718225c9a4a50a241d1011a1d847a")
+                FileId = new Guid("69f718225c9a4a50a241d1011a1d847a"),
+                FileExtension = "jpg"
             };
             var image42 = new DbImage
             {
@@ -434,7 +475,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere non magna a luctus. Suspendisse gravida ipsum eu metus",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere non magna a luctus. Suspendisse gravida ipsum eu metus",
-                FileId = new Guid("45ed3c53370b446d83076699d5fdef58")
+                FileId = new Guid("45ed3c53370b446d83076699d5fdef58"),
+                FileExtension = "png"
             };
             var image43 = new DbImage
             {
@@ -443,7 +485,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Ffffffff",
                 Description = "boring",
-                FileId = new Guid("1db7b3b8b2604d09956a7101f7a621f7")
+                FileId = new Guid("1db7b3b8b2604d09956a7101f7a621f7"),
+                FileExtension = "png"
             };
             var image44 = new DbImage
             {
@@ -452,7 +495,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "Finally",
                 Description = "Annoying",
-                FileId = new Guid("5f56e5c7ac66467ea475cd7de17077fb")
+                FileId = new Guid("5f56e5c7ac66467ea475cd7de17077fb"),
+                FileExtension = "png"
             };
             var image45 = new DbImage
             {
@@ -461,7 +505,8 @@ namespace ImgBoard.Dal.Migrations.Production
                 IdUploader = 2,
                 Name = "agagaga",
                 Description = "grrrr",
-                FileId = new Guid("61b8ad267bec46ada3fb2e7fcf8a7de5")
+                FileId = new Guid("61b8ad267bec46ada3fb2e7fcf8a7de5"),
+                FileExtension = "png"
             };
             #endregion
 
