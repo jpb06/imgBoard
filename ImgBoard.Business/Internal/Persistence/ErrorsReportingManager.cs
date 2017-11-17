@@ -1,6 +1,6 @@
-﻿using ImgBoard.Business.Internal.Contracts;
+﻿using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Dal.Manipulation.Services.ErrorsReporting.Contracts;
-using ImgBoard.Models.ErrorsReporting;
+using ImgBoard.Dal.Models.ErrorsReporting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Business.Internal
+namespace ImgBoard.Business.Internal.Persistence
 {
     internal class ErrorsReportingManager : IErrorsReportingManager
     {

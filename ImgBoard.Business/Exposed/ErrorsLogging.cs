@@ -1,4 +1,4 @@
-﻿using ImgBoard.Business.Internal.Contracts;
+﻿using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Business.InversionOfControl;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using Unity;
 
 namespace ImgBoard.Business.Exposed
 {
-    public static class Logging
+    public static class ErrorsLogging
     {
         public static async Task SaveAsync(Exception exception, AssemblyName assemblyName, string errorCode)
         {

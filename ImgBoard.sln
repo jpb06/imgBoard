@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgBoard.Dal.Models", "ImgB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgBoard.Shared.Tests", "ImgBoard.Shared.Tests\ImgBoard.Shared.Tests.csproj", "{BD4E5784-01AE-457C-B8FB-04499B16B506}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgBoard.Framework", "ImgBoard.Framework\ImgBoard.Framework.csproj", "{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{BD4E5784-01AE-457C-B8FB-04499B16B506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD4E5784-01AE-457C-B8FB-04499B16B506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4E5784-01AE-457C-B8FB-04499B16B506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{F81BC60A-FA5A-4144-9BF9-D9284878B0FD} = {DE02AEC0-73D9-423E-9011-7E1C5D090A0F}
 		{4C8D6F5D-5A70-4C2A-A90F-84F7CC9DB85A} = {80A50342-1F00-4D75-AC1A-39416460E6AC}
 		{BD4E5784-01AE-457C-B8FB-04499B16B506} = {3AEEA5FE-7F6E-4990-81F7-E6D8335143DA}
+		{3A729B2B-8DF3-4E69-A3BE-A72855D5B36F} = {3AEEA5FE-7F6E-4990-81F7-E6D8335143DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {945C8BD7-FA84-47C3-A520-0AAC88C06CA7}

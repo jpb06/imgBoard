@@ -1,4 +1,4 @@
-﻿using ImgBoard.Business.Internal.Contracts;
+﻿using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Mocked;
 using ImgBoard.Shared.Tests.Exceptions;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Business.Tests.UnitTests.Managers
+namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
 {
     [TestFixture]
     public class MockErrorsReportingManagerTest

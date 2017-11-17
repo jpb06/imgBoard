@@ -8,6 +8,11 @@ namespace ImgBoard.Business.Exceptions
 {
     public class BusinessErrorType
     {
-        // public static readonly string ...
+        // --------------------------------------------------------------------------
+        //                                                                    Generic 
+
+        // --------------------------------------------------------------------------
+        //                                                                     Images 
+        public static readonly string NoTagsSupplied = "Business.NoTagsSupplied";
     }
 }

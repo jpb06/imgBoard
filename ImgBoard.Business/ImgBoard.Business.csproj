@@ -72,12 +72,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\BusinessErrorType.cs" />
-    <Compile Include="Exposed\Logging.cs" />
-    <Compile Include="Exposed\Persistence.cs" />
-    <Compile Include="Internal\Contracts\IErrorsReportingManager.cs" />
-    <Compile Include="Internal\Contracts\IPersistenceManager.cs" />
-    <Compile Include="Internal\ErrorsReportingManager.cs" />
-    <Compile Include="Internal\PersistenceManager.cs" />
+    <Compile Include="Exceptions\CustomTypes\BusinessException.cs" />
+    <Compile Include="Exposed\ErrorsLogging.cs" />
+    <Compile Include="Exposed\Images.cs" />
+    <Compile Include="Internal\Model\ModelExtensions.cs" />
+    <Compile Include="Internal\Persistence\Contracts\IErrorsReportingManager.cs" />
+    <Compile Include="Internal\Persistence\Contracts\IImagesManager.cs" />
+    <Compile Include="Internal\Persistence\ErrorsReportingManager.cs" />
+    <Compile Include="Internal\Persistence\ImagesManager.cs" />
     <Compile Include="InversionOfControl\IoCConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,9 +89,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImgBoard.Dal.Models\ImgBoard.Dal.Models.csproj">
+      <Project>{4c8d6f5d-5a70-4c2a-a90f-84f7cc9db85a}</Project>
+      <Name>ImgBoard.Dal.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Dal\ImgBoard.Dal.csproj">
       <Project>{88165174-e506-4d1b-a840-deeaaf1373ab}</Project>
       <Name>ImgBoard.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImgBoard.Framework\ImgBoard.Framework.csproj">
+      <Project>{3a729b2b-8df3-4e69-a3be-a72855d5b36f}</Project>
+      <Name>ImgBoard.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImgBoard.Models\ImgBoard.Models.csproj">
       <Project>{4d26567d-4c3f-4fb8-ba7f-59e2af62ab54}</Project>

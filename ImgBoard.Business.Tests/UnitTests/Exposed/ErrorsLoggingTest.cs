@@ -1,29 +1,27 @@
 ﻿using ImgBoard.Business.Exposed;
-using ImgBoard.Business.InversionOfControl;
-using ImgBoard.Business.Tests.AssemblyInformation;
+using ImgBoard.Business.Tests.Configuration;
 using ImgBoard.Business.Tests.Exceptions;
 using ImgBoard.Dal.Models.ErrorsReporting;
 using ImgBoard.Shared.Tests.Data.Database;
 using ImgBoard.Shared.Tests.Data.Database.Primitives.ErrorsReporting;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ImgBoard.Business.Tests.UnitTests.Exposed
 {
     [TestFixture]
-    public class LoggingTest
+    public class ErrorsLoggingTest
     {
         private SqlConnection connection;
         private ExceptionsSqlHelper exceptionsSqlHelper;
 
-        public LoggingTest()
+        public ErrorsLoggingTest()
         {
+            Configuration.InversionOfControl.Initialize(); // dirty trick
+
             this.connection = new SqlConnection(DatabaseConfiguration.ErrorsReportingConnectionString);
             this.exceptionsSqlHelper = new ExceptionsSqlHelper(this.connection);
         }
@@ -52,7 +50,7 @@ namespace ImgBoard.Business.Tests.UnitTests.Exposed
             catch (Exception exception)
             {
                 AssemblyName assemblyName = AssemblyHelper.AssemblyName;
-                await Logging.SaveAsync(exception, assemblyName, TestErrorType.DivideByZero);
+                await ErrorsLogging.SaveAsync(exception, assemblyName, TestErrorType.DivideByZero);
 
                 ErrorReportException savedException = this.exceptionsSqlHelper.GetBy(assemblyName.Name, assemblyName.Version.ToString());
 

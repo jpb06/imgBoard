@@ -1,5 +1,5 @@
-﻿using ImgBoard.Business.Internal;
-using ImgBoard.Business.Internal.Contracts;
+﻿using ImgBoard.Business.Internal.Persistence;
+using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Dal.Context.Contracts;
 using ImgBoard.Dal.Context.EndObjects;
 using ImgBoard.Dal.Manipulation.Repositories.Contracts;
@@ -22,25 +22,30 @@ namespace ImgBoard.Business.InversionOfControl
 {
     internal static class IoCConfiguration
     {
-        public static readonly UnityContainer container;
+        public static readonly UnityContainer container = new UnityContainer();
 
-        static IoCConfiguration()
+        public static void ConfigureForProduction()
         {
-            container = new UnityContainer();
+            ConfigureErrorReporting();
 
-            #region Errors reporting
-            container.RegisterType<IErrorsReportingContext, ErrorsReportingContext>(
-                new HierarchicalLifetimeManager()
-            );
-            container.RegisterType(
-                typeof(IGenericRepository<>), typeof(GenericRepository<>), 
-                new InjectionConstructor(typeof(IErrorsReportingContext)));
-            container.RegisterType<IErrorsReportingService, ErrorsReportingService>();
+            container.RegisterType<IImgBoardContext, ImgBoardContext>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<IErrorsReportingManager, ErrorsReportingManager>();
-            #endregion
+            container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<ICommentRepository, CommentRepository>();
+            container.RegisterType<IImageRepository, ImageRepository>();
+            container.RegisterType<ITagRepository, TagRepository>();
+            container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<IUserRepository, UserRepository>();
 
-            #region Main
+            container.RegisterType<IPersistenceService, PersistenceService>();
+
+            container.RegisterType<IImagesManager, ImagesManager>();
+        }
+
+        public static void ConfigureForTests()
+        {
+            ConfigureErrorReporting();
+
             container.RegisterType<IImgBoardContext, ImgBoardTestContext>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ICategoryRepository, CategoryRepository>();
@@ -52,8 +57,20 @@ namespace ImgBoard.Business.InversionOfControl
 
             container.RegisterType<IPersistenceService, PersistenceService>();
 
+            container.RegisterType<IImagesManager, ImagesManager>();
+        }
+
+        public static void ConfigureErrorReporting()
+        {
+            container.RegisterType<IErrorsReportingContext, ErrorsReportingContext>(
+               new HierarchicalLifetimeManager()
+            );
+            container.RegisterType(
+                typeof(IGenericRepository<>), typeof(GenericRepository<>),
+                new InjectionConstructor(typeof(IErrorsReportingContext)));
+            container.RegisterType<IErrorsReportingService, ErrorsReportingService>();
+
             container.RegisterType<IErrorsReportingManager, ErrorsReportingManager>();
-            #endregion
         }
     }
 }

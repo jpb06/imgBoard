@@ -81,11 +81,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInformation\AssemblyHelper.cs" />
+    <Compile Include="Configuration\AssemblyHelper.cs" />
     <Compile Include="Exceptions\TestErrorType.cs" />
+    <Compile Include="Configuration\InversionOfControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTests\Exposed\LoggingTest.cs" />
-    <Compile Include="UnitTests\Managers\MockErrorsReportingManagerTest.cs" />
+    <Compile Include="UnitTests\Exposed\ErrorsLoggingTest.cs" />
+    <Compile Include="UnitTests\Exposed\ImagesTest.cs" />
+    <Compile Include="UnitTests\Internal\Persistence\MockErrorsReportingManagerTest.cs" />
+    <Compile Include="UnitTests\Internal\Persistence\MockImagesManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImgBoard.Business\ImgBoard.Business.csproj">

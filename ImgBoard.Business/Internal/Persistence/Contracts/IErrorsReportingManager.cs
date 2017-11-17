@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Business.Internal.Contracts
+namespace ImgBoard.Business.Internal.Persistence.Contracts
 {
     internal interface IErrorsReportingManager
     {

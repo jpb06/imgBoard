@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Business.Tests.AssemblyInformation
+namespace ImgBoard.Business.Tests.Configuration
 {
     public static class AssemblyHelper
     {
