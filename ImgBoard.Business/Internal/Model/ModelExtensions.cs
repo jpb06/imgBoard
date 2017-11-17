@@ -56,6 +56,7 @@ namespace ImgBoard.Business.Internal.Model
                 Name = image.Name,
                 Description = image.Description,
                 FileId = image.FileId,
+                FileExtension = image.FileExtension,
                 Category = image.Category == null ? null : new Category
                 {
                     Id = image.Category.Id,
