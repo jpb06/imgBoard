@@ -6,10 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImgBoard.Models.Main.Internal
+namespace ImgBoard.Models.Main
 {
     public class Tag
     {
-        
+        public int Id { get; set; }
+        //--------------------------------------------
+        public string Name { get; set; }
+        //--------------------------------------------
     }
 }
