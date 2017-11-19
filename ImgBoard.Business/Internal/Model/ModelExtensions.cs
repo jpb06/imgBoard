@@ -36,7 +36,7 @@ namespace ImgBoard.Business.Internal.Model
                     IdUploader = comment.Image.IdUploader,
                     Name = comment.Image.Name,
                     Description = comment.Image.Description,
-                    FileId = comment.Image.FileId,
+                    FileId = comment.Image.FileId.ToString("N"),
                     Category = comment.Image.Category == null ? null : new Category
                     {
                         Id = comment.Image.Category.Id,
@@ -55,8 +55,8 @@ namespace ImgBoard.Business.Internal.Model
                 IdUploader = image.IdUploader,
                 Name = image.Name,
                 Description = image.Description,
-                FileId = image.FileId,
-                FileExtension = image.FileExtension,
+                FileId = image.FileId.ToString("N"),
+            FileExtension = image.FileExtension,
                 Category = image.Category == null ? null : new Category
                 {
                     Id = image.Category.Id,

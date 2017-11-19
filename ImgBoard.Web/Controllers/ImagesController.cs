@@ -1,17 +1,22 @@
-﻿using System;
+﻿using ImgBoard.Business.Exposed;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ImgBoard.Models.Main;
 
 namespace ImgBoard.Web.Controllers
 {
     public class ImagesController : Controller
     {
         // GET: Images
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var images = await Images.GetAsync();
+
+            return View(images);
         }
 
         public ActionResult ByCategory()
