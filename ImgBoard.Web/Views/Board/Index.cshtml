@@ -36,13 +36,13 @@
     </div>
 </div>
 
-<div class="container-fluid imagesGrid">
+<div class="imagesGrid">
     <div id="gridContent" class="row no-gutter">
-        <div class="grid-sizer col-lg-3 col-md-6 col-xs-12"></div>
+        <div class="grid-sizer col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
 
         @foreach (var image in Model)
         {
-            <div class="grid-item col-lg-3 col-md-6 col-xs-12">
+            <div class="grid-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="grid-item-content">
                     <div class="grid-item-uploader">Uploaded by @@@image.Uploader.Login</div>
                     <img src="http://localhost/imgBoardContent/@image.FileId.@image.FileExtension" />
