@@ -25,3 +25,20 @@
 .imagesGrid .grid-item-description {
     margin-top: 5px;
 }
+
+.imagesGrid .grid-item-uploader {
+    float: left;
+    font-size: x-small;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.imagesGrid .grid-item-tag {
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 25px;
+    float: left;
+    padding: 2px 10px;
+    margin-right: 1px;
+    background-color: white;
+}

@@ -1,5 +1,6 @@
 ﻿using ImgBoard.Dal.Models.Main;
 using ImgBoard.Models.Main;
+using System.Linq;
 
 namespace ImgBoard.Business.Internal.Model
 {
@@ -22,27 +23,8 @@ namespace ImgBoard.Business.Internal.Model
                 IdCreator = comment.IdCreator,
                 IdImage = comment.IdImage,
                 Message = comment.Message,
-                Creator = comment.Creator == null ? null : new User
-                {
-                    Id = comment.Creator.Id,
-                    Login = comment.Creator.Login,
-                    Password = comment.Creator.Password,
-                    UserName = comment.Creator.UserName
-                },
-                Image = comment.Image == null ? null : new Image
-                {
-                    Id = comment.Image.Id,
-                    IdCategory = comment.Image.IdCategory,
-                    IdUploader = comment.Image.IdUploader,
-                    Name = comment.Image.Name,
-                    Description = comment.Image.Description,
-                    FileId = comment.Image.FileId.ToString("N"),
-                    Category = comment.Image.Category == null ? null : new Category
-                    {
-                        Id = comment.Image.Category.Id,
-                        Title = comment.Image.Category.Title
-                    }
-                }
+                Creator = comment.Creator == null ? null : comment.Creator.ToExposed(),
+                Image = comment.Image == null ? null : comment.Image.ToExposed()
             };
         }
 
@@ -56,19 +38,10 @@ namespace ImgBoard.Business.Internal.Model
                 Name = image.Name,
                 Description = image.Description,
                 FileId = image.FileId.ToString("N"),
-            FileExtension = image.FileExtension,
-                Category = image.Category == null ? null : new Category
-                {
-                    Id = image.Category.Id,
-                    Title = image.Category.Title
-                },
-                Uploader = image.Uploader == null ? null : new User
-                {
-                    Id = image.Uploader.Id,
-                    Login = image.Uploader.Login,
-                    Password = image.Uploader.Password,
-                    UserName = image.Uploader.UserName
-                }
+                FileExtension = image.FileExtension,
+                Category = image.Category == null ? null : image.Category.ToExposed(),
+                Uploader = image.Uploader == null ? null : image.Uploader.ToExposed(),
+                Tags = image.Tags == null ? null : image.Tags.Select(t => t.ToExposed()).ToList()
             };
         }
 

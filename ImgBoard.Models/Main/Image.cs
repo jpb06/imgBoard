@@ -21,5 +21,6 @@ namespace ImgBoard.Models.Main
         //--------------------------------------------
         public Category Category { get; set; }
         public User Uploader { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

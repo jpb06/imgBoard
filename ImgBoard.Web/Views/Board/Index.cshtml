@@ -40,21 +40,28 @@
     <div id="gridContent" class="row no-gutter">
         <div class="grid-sizer col-lg-3 col-md-6 col-xs-12"></div>
 
-        @foreach (var item in Model)
+        @foreach (var image in Model)
         {
             <div class="grid-item col-lg-3 col-md-6 col-xs-12">
                 <div class="grid-item-content">
-                    <img src="http://localhost/imgBoardContent/@item.FileId.@item.FileExtension" />
+                    <div class="grid-item-uploader">Uploaded by @@@image.Uploader.Login</div>
+                    <img src="http://localhost/imgBoardContent/@image.FileId.@image.FileExtension" />
                     <div class="grid-item-description">
-                        @if (!string.IsNullOrEmpty(item.Name))
+                        @if (!string.IsNullOrEmpty(image.Name))
                         {
-                            @item.Name<br />
+                            <b>@image.Name</b><br />
                         }
-                        @if (!string.IsNullOrEmpty(item.Description))
+                        @if (!string.IsNullOrEmpty(image.Description))
                         {
-                            @item.Description<br />
+                            @image.Description<br />
                         }
-                        <b>Uploaded by @@@item.Uploader.Login</b>
+                        <div class="grid-item-tags">
+                            @foreach (var tag in image.Tags)
+                            {
+                                <div class="grid-item-tag">@tag.Name</div>
+                            }
+                        </div>
+                        <div style="clear:both;"></div>
                     </div>
                 </div>
             </div>
