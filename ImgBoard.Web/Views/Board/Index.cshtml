@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ImgBoard.Models.Main.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles {
+    @Styles.Render("~/Content/boardcss")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/boardjs")
+
+    <script>
+        $(document).ready(function () {
+            $('.imagesGrid').imagesLoaded().progress(function () {
+                $('#gridContent').masonry({
+                    itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+                    columnWidth: '.grid-sizer',
+                    percentPosition: true
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Images
+        </h1>
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Images", "Index", "Board")</li>
+            <li class="active">All</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid imagesGrid">
+    <div id="gridContent" class="row no-gutter">
+        <div class="grid-sizer col-lg-3 col-md-6 col-xs-12"></div>
+
+        @foreach (var item in Model)
+        {
+            <div class="grid-item col-lg-3 col-md-6 col-xs-12">
+                <div class="grid-item-content">
+                    <img src="http://localhost/imgBoardContent/@item.FileId.@item.FileExtension" />
+                    <div class="grid-item-description">
+                        @if (!string.IsNullOrEmpty(item.Name))
+                        {
+                            @item.Name<br />
+                        }
+                        @if (!string.IsNullOrEmpty(item.Description))
+                        {
+                            @item.Description<br />
+                        }
+                        <b>Uploaded by @@@item.Uploader.Login</b>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

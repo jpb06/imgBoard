@@ -9,9 +9,8 @@ using ImgBoard.Models.Main;
 
 namespace ImgBoard.Web.Controllers
 {
-    public class ImagesController : Controller
+    public class BoardController : Controller
     {
-        // GET: Images
         public async Task<ActionResult> Index()
         {
             var images = await Images.GetAsync();

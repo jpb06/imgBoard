@@ -14,7 +14,7 @@ namespace ImgBoard.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/imagesjs").Include(
+            bundles.Add(new ScriptBundle("~/bundles/boardjs").Include(
                         "~/Scripts/Framework/ImageLoader.js",
                         "~/Scripts/masonry.pkgd.min.js",
                         "~/Scripts/imagesloaded.pkgd.min.js"));
@@ -32,6 +32,9 @@ namespace ImgBoard.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/Custom/customNavBar.css"));
+
+            bundles.Add(new StyleBundle("~/Content/boardcss").Include(
+                      "~/Content/Custom/imagesGrid.css"));
         }
     }
 }

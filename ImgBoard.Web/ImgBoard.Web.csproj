@@ -154,7 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +167,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom\customNavBar.css" />
+    <Content Include="Content\Custom\imagesGrid.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -213,16 +214,17 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="TypeScript\tsconfig.json" />
-    <Content Include="Views\Images\ByCategory.cshtml" />
-    <Content Include="Views\Images\ByTag.cshtml" />
+    <Content Include="Views\Board\ByCategory.cshtml" />
+    <Content Include="Views\Board\ByTag.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
-    <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Board\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Framework\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -231,7 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="TypeScript\ImageLoader.ts" />
     <TypeScriptCompile Include="TypeScript\Models\Category.d.ts" />
     <TypeScriptCompile Include="TypeScript\Models\Image.d.ts" />
     <TypeScriptCompile Include="TypeScript\Models\User.d.ts" />
