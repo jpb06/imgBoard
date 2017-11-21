@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ImgBoard.Models.Main.Image>
+
+<div class="imagesGrid">
+    <div id="gridContent" class="row no-gutter">
+        <div class="grid-sizer col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+
+        @foreach (var image in Model)
+        {
+            <div class="grid-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="grid-item-content">
+                    <div class="grid-item-uploader">Uploaded by @@@image.Uploader.Login</div>
+                    <img src="http://localhost/imgBoardContent/@image.FileId.@image.FileExtension" />
+                    <div class="grid-item-description">
+                        @if (!string.IsNullOrEmpty(image.Name))
+                        {
+                            <b>@image.Name</b><br />
+                        }
+                        @if (!string.IsNullOrEmpty(image.Description))
+                        {
+                            @image.Description<br />
+                        }
+                        <div class="grid-item-tags">
+                            @foreach (var tag in image.Tags)
+                            {
+                                <div class="grid-item-tag">#@tag.Name</div>
+                            }
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
