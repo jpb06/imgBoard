@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ImgBoard.Models.Main.Image>
 
 @{
-    ViewBag.Title = "Images by tag";
+    ViewBag.Title = "Images by category";
 }
 
 @section styles {
@@ -31,7 +31,7 @@
         </h1>
         <ol class="breadcrumb">
             <li>@Html.ActionLink("Images", "Index", "Board")</li>
-            <li class="active">By tag</li>
+            <li class="active">By category</li>
         </ol>
     </div>
 </div>
