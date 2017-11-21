@@ -18,14 +18,18 @@ namespace ImgBoard.Web.Controllers
             return View(images);
         }
 
-        public ActionResult ByCategory()
+        public async Task<ActionResult> ByCategory(int id)
         {
-            return View();
+            var images = await Images.GetAsync(categoryId:id);
+
+            return View(images);
         }
 
-        public ActionResult ByTag()
+        public async Task<ActionResult> ByTag(int id)
         {
-            return View();
+            var images = await Images.GetAsync(new int[] { id });
+
+            return View(images);
         }
     }
 }

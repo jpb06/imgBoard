@@ -501,7 +501,7 @@ namespace ImgBoard.Dal.Migrations.Production
             var image45 = new DbImage
             {
                 Id = 45,
-                IdCategory = 2,
+                IdCategory = 3,
                 IdUploader = 2,
                 Name = "agagaga",
                 Description = "grrrr",

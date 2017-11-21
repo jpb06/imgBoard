@@ -1,7 +1,70 @@
-﻿
+﻿@model IEnumerable<ImgBoard.Models.Main.Image>
+
 @{
-    ViewBag.Title = "ByCategory";
+    ViewBag.Title = "Images by tag";
 }
 
-<h2>ByCategory</h2>
+@section styles {
+    @Styles.Render("~/Content/boardcss")
+}
 
+@section scripts {
+    @Scripts.Render("~/bundles/boardjs")
+
+    <script>
+        $(document).ready(function () {
+            $('.imagesGrid').imagesLoaded().progress(function () {
+                $('#gridContent').masonry({
+                    itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+                    columnWidth: '.grid-sizer',
+                    percentPosition: true
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Images
+        </h1>
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Images", "Index", "Board")</li>
+            <li class="active">By tag</li>
+        </ol>
+    </div>
+</div>
+
+<div class="imagesGrid">
+    <div id="gridContent" class="row no-gutter">
+        <div class="grid-sizer col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+
+        @foreach (var image in Model)
+        {
+            <div class="grid-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="grid-item-content">
+                    <div class="grid-item-uploader">Uploaded by @@@image.Uploader.Login</div>
+                    <img src="http://localhost/imgBoardContent/@image.FileId.@image.FileExtension" />
+                    <div class="grid-item-description">
+                        @if (!string.IsNullOrEmpty(image.Name))
+                        {
+                            <b>@image.Name</b><br />
+                        }
+                        @if (!string.IsNullOrEmpty(image.Description))
+                        {
+                            @image.Description<br />
+                        }
+                        <div class="grid-item-tags">
+                            @foreach (var tag in image.Tags)
+                            {
+                                <div class="grid-item-tag">@tag.Name</div>
+                            }
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
