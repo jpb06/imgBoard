@@ -43,5 +43,19 @@ namespace ImgBoard.Business.Internal.Persistence
 
             return data.SelectMany(t => t.Images).ToList();
         }
+
+        public async Task<List<DbImage>> FetchImagesMatchingCategory(string term)
+        {
+            var data = await this.persistenceService.GetAsync<DbImage>(filter: el => el.Category.Title.Contains(term));
+
+            return data;
+        }
+
+        //public async Task<List<DbTag>> FetchMatchingTags(string criteria)
+        //{
+        //    var tags = await this.persistenceService.GetAsync<DbTag>(t => t.Name.Contains(criteria));
+
+        //    return tags;
+        //}
     }
 }

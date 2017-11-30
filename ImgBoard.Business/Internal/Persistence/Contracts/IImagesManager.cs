@@ -12,5 +12,6 @@ namespace ImgBoard.Business.Internal.Persistence.Contracts
         Task<List<DbImage>> FetchImagesAsync();
         Task<List<DbImage>> FetchImagesByCategoryAsync(int categoryId);
         Task<List<DbImage>> FetchTaggedImagesAsync(int[] tagsIds);
+        Task<List<DbImage>> FetchImagesMatchingCategory(string term);
     }
 }

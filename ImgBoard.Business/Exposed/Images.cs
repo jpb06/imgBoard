@@ -42,5 +42,18 @@ namespace ImgBoard.Business.Exposed
                              .ToList();
             }
         }
+
+        public static async Task<List<Image>> GetMatchAsync(string term)
+        {
+            using (IUnityContainer unit = IoCConfiguration.container.CreateChildContainer())
+            {
+                IImagesManager manager = unit.Resolve<IImagesManager>();
+
+                IEnumerable<DbImage> images = await manager.FetchImagesMatchingCategory(term);
+                
+                return images.Select(el => el.ToExposed())
+                             .ToList();
+            }
+        }
     }
 }
