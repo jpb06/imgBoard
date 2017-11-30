@@ -35,6 +35,9 @@ namespace ImgBoard.Web
 
             bundles.Add(new StyleBundle("~/Content/boardcss").Include(
                       "~/Content/Custom/imagesGrid.css"));
+
+            bundles.Add(new StyleBundle("~/Content/searchcss").Include(
+                      "~/Content/Custom/searchBar.css"));
         }
     }
 }
