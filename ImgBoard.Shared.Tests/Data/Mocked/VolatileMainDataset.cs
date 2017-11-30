@@ -29,7 +29,7 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
         public void Populate()
         {
             #region Articles
-            this.Categories.AddRange(new List<DbCategory>()
+            var categories = new List<DbCategory>()
             {
                 new DbCategory
                 {
@@ -61,7 +61,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Id = 5,
                     Title = "Category 5"
                 },
-            });
+            };
+
+            this.Categories.AddRange(categories);
             #endregion
 
             #region Users
@@ -97,7 +99,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = "Image 1 name",
                     Description = "Image 1 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -107,7 +111,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = "Image 2 name",
                     Description = "Image 2 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -117,7 +123,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = "Image 3 name",
                     Description = null,
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -127,7 +135,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = null,
                     Description = null,
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -137,7 +147,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = "Image 5 name",
                     Description = "Image 5 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -147,7 +159,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 1,
                     Name = "Image 5 name",
                     Description = null,
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -157,7 +171,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 2,
                     Name = "Image 7 name",
                     Description = "Image 7 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -167,7 +183,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 3,
                     Name = "Image 8 name",
                     Description = "Image 8 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(2)
                 },
                 new DbImage
                 {
@@ -177,7 +195,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 3,
                     Name = "Image 9 name",
                     Description = "Image 9 description",
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(2)
                 },
                 new DbImage
                 {
@@ -187,7 +207,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 3,
                     Name = "Image 8 name",
                     Description = null,
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(2)
                 },
                 new DbImage
                 {
@@ -197,7 +219,9 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     IdCategory = 3,
                     Name = null,
                     Description = null,
-                    FileId = Guid.NewGuid()
+                    FileId = Guid.NewGuid(),
+
+                    Category = categories.ElementAt(2)
                 }
             });
 

@@ -82,5 +82,21 @@ namespace ImgBoard.Business.Tests.UnitTests.Exposed
 
             Assert.AreEqual(2, images.Count);
         }
+
+        [Test]
+        public async Task GetMatchAsync_Cat2()
+        {
+            List<Image> images = await Images.GetMatchAsync("2");
+
+            Assert.AreEqual(2, images.Count);
+        }
+
+        [Test]
+        public async Task GetMatchAsync_AllCats()
+        {
+            List<Image> images = await Images.GetMatchAsync("Test Category");
+
+            Assert.AreEqual(5, images.Count);
+        }
     }
 }

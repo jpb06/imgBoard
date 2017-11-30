@@ -79,5 +79,37 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
 
             Assert.AreEqual(6, images.Count);
         }
+
+        [Test]
+        public async Task FetchImagesMatchingCategory_Cat2()
+        {
+            VolatileMainDataset dataSet = new VolatileMainDataset();
+            Mock<IImagesManager> mockService = new Mock<IImagesManager>();
+
+            mockService.Setup(s => s.FetchImagesMatchingCategory(It.IsAny<string>()))
+                       .Returns<string>(term => Task.FromResult<List<DbImage>>(dataSet.Images.Where(el => el.Category.Title.Contains(term))
+                                                                                             .ToList()));
+            this.imagesManager = mockService.Object;
+
+            List<DbImage> images = await this.imagesManager.FetchImagesMatchingCategory("2");
+
+            Assert.AreEqual(1, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesMatchingCategory_AllCats()
+        {
+            VolatileMainDataset dataSet = new VolatileMainDataset();
+            Mock<IImagesManager> mockService = new Mock<IImagesManager>();
+
+            mockService.Setup(s => s.FetchImagesMatchingCategory(It.IsAny<string>()))
+                       .Returns<string>(term => Task.FromResult<List<DbImage>>(dataSet.Images.Where(el => el.Category.Title.Contains(term))
+                                                                                             .ToList()));
+            this.imagesManager = mockService.Object;
+
+            List<DbImage> images = await this.imagesManager.FetchImagesMatchingCategory("Category");
+
+            Assert.AreEqual(11, images.Count);
+        }
     }
 }
