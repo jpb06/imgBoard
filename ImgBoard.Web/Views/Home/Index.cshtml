@@ -2,3 +2,19 @@
     ViewBag.Title = "Home Page";
 }
 
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/imgboard/siteapi/imagesmatchingcategory/a",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                console.log(data);
+            });  
+
+        });
+    </script>
+}
