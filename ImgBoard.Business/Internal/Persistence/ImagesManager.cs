@@ -50,12 +50,5 @@ namespace ImgBoard.Business.Internal.Persistence
 
             return data;
         }
-
-        //public async Task<List<DbTag>> FetchMatchingTags(string criteria)
-        //{
-        //    var tags = await this.persistenceService.GetAsync<DbTag>(t => t.Name.Contains(criteria));
-
-        //    return tags;
-        //}
     }
 }
