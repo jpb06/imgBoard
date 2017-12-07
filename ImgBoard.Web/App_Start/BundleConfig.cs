@@ -24,6 +24,7 @@ namespace ImgBoard.Web
             bundles.Add(new ScriptBundle("~/bundles/boardjs").Include(
                         "~/Scripts/vendor/masonry.pkgd.min.js",
                         "~/Scripts/vendor/imagesloaded.pkgd.min.js",
+                        "~/Scripts/Framework/Util/Util.js",
                         "~/Scripts/Framework/Models/FrontModels.js",
                         "~/Scripts/Framework/ApiRequests/GetImagesRequest.js",
                         "~/Scripts/Framework/ViewModels/BoardViewModel.js",

@@ -339,6 +339,7 @@
     <TypeScriptCompile Include="Scripts\typings\knockout\index.d.ts" />
     <TypeScriptCompile Include="TypeScript\ApiRequests\GetImagesRequest.ts" />
     <TypeScriptCompile Include="TypeScript\Models\Models.ts" />
+    <TypeScriptCompile Include="TypeScript\Util\Util.ts" />
     <TypeScriptCompile Include="TypeScript\ViewModels\BoardViewModel.ts" />
     <TypeScriptCompile Include="TypeScript\Models\FrontModels.ts" />
     <TypeScriptCompile Include="TypeScript\ViewsCode\Board.ts" />

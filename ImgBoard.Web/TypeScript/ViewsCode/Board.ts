@@ -3,28 +3,20 @@
         let timeStart = Date.now();
         ApiRequests.GetImagesRequest(images => {
             ko.applyBindings(new ViewModels.BoardViewModel(images));
-            
-            let elapsed = Date.now() - timeStart;
-            if (elapsed < 500) {
-                setTimeout(function () {
-                    setupBoardDom();
-                }, 500 - elapsed);
-            }
-            else {
-                setupBoardDom();
-            }
+
+            Util.SetMinimumTimeout(timeStart, 500, this.SetupBoardDom);
         });
     }
 
-    export function setupBoardDom() {
+    export function SetupBoardDom() {
         $('.imagesGrid').imagesLoaded().progress(function () {
             $('#gridContent').masonry({
-                itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+                itemSelector: '.grid-item',
                 columnWidth: '.grid-sizer',
                 percentPosition: true
             });
         });
-        $('.imagesGrid').toggle();
         $('#mainThrobber').toggle();
+        $('.imagesGrid').fadeIn();
     }
 }
