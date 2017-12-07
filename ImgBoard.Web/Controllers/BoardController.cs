@@ -11,11 +11,9 @@ namespace ImgBoard.Web.Controllers
 {
     public class BoardController : Controller
     {
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var images = await Images.GetAsync();
-
-            return View(images);
+            return View();
         }
 
         public async Task<ActionResult> ByCategory(int id)

@@ -1,12 +1,18 @@
 ﻿namespace Models {
 
-    export interface Category {
+    export interface ITag {
+        Id: number;
+
+        Name: string;
+    }
+
+    export interface ICategory {
         Id: number;
 
         Title: string;
     }
 
-    export interface User {
+    export interface IUser {
         Id: number;
 
         Login: string;
@@ -14,7 +20,7 @@
         UserName: string;
     }
 
-    export interface Image {
+    export interface IImage {
         Id: number;
         IdCategory?: number;
         IdUploader: number;
@@ -24,8 +30,9 @@
         FileId: string;
         FileExtension: string;
 
-        Category: Category;
-        Uploader: User;
+        Category: ICategory;
+        Uploader: IUser;
+        Tags: Array<ITag>;
     }
     
 }

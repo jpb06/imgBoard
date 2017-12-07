@@ -9,17 +9,12 @@
 }
 
 @section scripts {
+    @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/boardjs")
 
     <script>
         $(document).ready(function () {
-            $('.imagesGrid').imagesLoaded().progress(function () {
-                $('#gridContent').masonry({
-                    itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
-                    columnWidth: '.grid-sizer',
-                    percentPosition: true
-                });
-            });
+            ViewsCode.Board();
         });
     </script>
 }
@@ -36,6 +31,34 @@
     </div>
 </div>
 
-@{
-    Html.RenderPartial("_ImagesList");
-}
+<div id="mainThrobber" style="text-align:center;">
+    <img src="~/Images/mainThrobber.gif" />
+</div>
+<div id="search-results" class="imagesGrid" style="display:none;">
+    <div id="gridContent" class="row no-gutter">
+        <div class="grid-sizer col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+
+        <div data-bind="foreach: Images">
+
+            <div class="grid-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="grid-item-content">
+                    <div class="grid-item-uploader" data-bind="text: UploaderLogin"></div>
+                    <img  data-bind="attr:{src: FileUrl }" />
+                    <div class="grid-item-description">
+                        <div data-bind="visible: Name !== undefined">
+                            <b data-bind="text: Name"></b>
+                        </div>
+                        <span data-bind="text: Description"></span>
+                        
+                        <div class="grid-item-tags" data-bind="foreach: Tags">
+                                <div class="grid-item-tag" data-bind="text: Name"></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
