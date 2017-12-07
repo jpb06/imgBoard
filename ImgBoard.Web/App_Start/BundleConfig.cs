@@ -39,15 +39,15 @@ namespace ImgBoard.Web
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/Custom/customNavBar.css"));
+                      "~/Content/vendor/bootstrap.css",
+                      "~/Content/custom/site.css",
+                      "~/Content/custom/customNavBar.css"));
 
             bundles.Add(new StyleBundle("~/Content/boardcss").Include(
-                      "~/Content/Custom/imagesGrid.css"));
+                      "~/Content/custom/imagesGrid.css"));
 
             bundles.Add(new StyleBundle("~/Content/searchcss").Include(
-                      "~/Content/Custom/searchBar.css"));
+                      "~/Content/custom/searchBar.css"));
         }
     }
 }
