@@ -15,19 +15,5 @@ namespace ImgBoard.Web.Controllers
         {
             return View();
         }
-
-        public async Task<ActionResult> ByCategory(int id)
-        {
-            var images = await Images.GetAsync(categoryId:id);
-
-            return View(images);
-        }
-
-        public async Task<ActionResult> ByTag(int id)
-        {
-            var images = await Images.GetAsync(new int[] { id });
-
-            return View(images);
-        }
     }
 }

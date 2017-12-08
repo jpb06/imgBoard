@@ -212,17 +212,17 @@
     <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Custom\customNavBar.css" />
-    <Content Include="Content\Custom\imagesGrid.css" />
-    <Content Include="Content\Custom\searchBar.css" />
+    <Content Include="Content\vendor\bootstrap-theme.css" />
+    <Content Include="Content\vendor\bootstrap-theme.min.css" />
+    <Content Include="Content\vendor\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap.min.css" />
+    <Content Include="Content\custom\customNavBar.css" />
+    <Content Include="Content\custom\imagesGrid.css" />
+    <Content Include="Content\custom\searchBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\custom\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -230,10 +230,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\vendor\bootstrap.min.css.map" />
+    <Content Include="Content\vendor\bootstrap.css.map" />
+    <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
+    <Content Include="Content\vendor\bootstrap-theme.css.map" />
     <None Include="Scripts\vendor\jquery-3.2.1.intellisense.js" />
     <Content Include="Images\mainThrobber.gif" />
     <Content Include="Scripts\vendor\bootstrap.js" />
@@ -269,8 +269,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="TypeScript\tsconfig.json" />
-    <Content Include="Views\Board\ByCategory.cshtml" />
-    <Content Include="Views\Board\ByTag.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <Content Include="Views\Board\Index.cshtml" />
     <Content Include="Views\Shared\_ImagesList.cshtml" />
