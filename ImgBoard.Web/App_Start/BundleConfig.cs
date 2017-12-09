@@ -27,6 +27,7 @@ namespace ImgBoard.Web
                         "~/Scripts/Framework/Util/Util.js",
                         "~/Scripts/Framework/Models/FrontModels.js",
                         "~/Scripts/Framework/ApiRequests/GetImagesRequest.js",
+                        "~/Scripts/Framework/ApiRequests/GetImagesMatchingCategory.js",
                         "~/Scripts/Framework/ViewModels/BoardViewModel.js",
                         "~/Scripts/Framework/ViewsCode/Board.js"));
 
@@ -45,9 +46,6 @@ namespace ImgBoard.Web
 
             bundles.Add(new StyleBundle("~/Content/boardcss").Include(
                       "~/Content/custom/imagesGrid.css"));
-
-            bundles.Add(new StyleBundle("~/Content/searchcss").Include(
-                      "~/Content/custom/searchBar.css"));
         }
     }
 }
