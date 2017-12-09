@@ -8,8 +8,13 @@
         });
     }
 
+    export function ResetBoardDom() {
+        $('#gridContent').masonry('destroy');
+        ViewsCode.SetupBoardDom();
+    }
+
     export function SetupBoardDom() {
-        $('.imagesGrid').imagesLoaded().progress(function () {
+        $('.imagesGrid').imagesLoaded().progress(() => {
             $('#gridContent').masonry({
                 itemSelector: '.grid-item',
                 columnWidth: '.grid-sizer',

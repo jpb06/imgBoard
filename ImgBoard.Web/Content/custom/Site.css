@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -9,9 +9,36 @@
     padding-right: 15px;
 }
 
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.site-content {
+    flex: 1;
+}
+
+.footer {
+    padding: 24px;
+    padding: 1.5rem;
+    background: #404040;
+    color: #999;
+    font-size: .85em;
+    text-align: center;
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
     white-space: normal;
+}
+
+.baseBox {
+    margin: 0 3px 3px 3px;
+    padding: 11px 3px;
+    border-radius: 10px;
+    background: #e2e2e2;
+    text-align: center;
 }
