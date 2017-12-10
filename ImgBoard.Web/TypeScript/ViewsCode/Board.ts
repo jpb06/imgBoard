@@ -9,19 +9,19 @@
     }
 
     export function ResetBoardDom() {
-        $('#gridContent').masonry('destroy');
+        $('#grid-content').masonry('destroy');
         ViewsCode.SetupBoardDom();
     }
 
     export function SetupBoardDom() {
-        $('.imagesGrid').imagesLoaded().progress(() => {
-            $('#gridContent').masonry({
+        $('.images-grid').imagesLoaded().progress(() => {
+            $('#grid-content').masonry({
                 itemSelector: '.grid-item',
                 columnWidth: '.grid-sizer',
                 percentPosition: true
             });
         });
-        $('#mainThrobber').hide();
-        $('.imagesGrid').fadeIn();
+        $('#main-throbber').hide();
+        $('.images-grid').fadeIn();
     }
 }
