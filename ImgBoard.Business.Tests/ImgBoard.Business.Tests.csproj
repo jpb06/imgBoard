@@ -85,8 +85,10 @@
     <Compile Include="Exceptions\TestErrorType.cs" />
     <Compile Include="Configuration\InversionOfControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\Exposed\CategoriesTest.cs" />
     <Compile Include="UnitTests\Exposed\ErrorsLoggingTest.cs" />
     <Compile Include="UnitTests\Exposed\ImagesTest.cs" />
+    <Compile Include="UnitTests\Internal\Persistence\MockCategoriesManagerTest.cs" />
     <Compile Include="UnitTests\Internal\Persistence\MockErrorsReportingManagerTest.cs" />
     <Compile Include="UnitTests\Internal\Persistence\MockImagesManagerTest.cs" />
   </ItemGroup>

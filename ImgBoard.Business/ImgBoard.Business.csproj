@@ -73,9 +73,12 @@
   <ItemGroup>
     <Compile Include="Exceptions\BusinessErrorType.cs" />
     <Compile Include="Exceptions\CustomTypes\BusinessException.cs" />
+    <Compile Include="Exposed\Categories.cs" />
     <Compile Include="Exposed\ErrorsLogging.cs" />
     <Compile Include="Exposed\Images.cs" />
     <Compile Include="Internal\Model\ModelExtensions.cs" />
+    <Compile Include="Internal\Persistence\CategoriesManager.cs" />
+    <Compile Include="Internal\Persistence\Contracts\ICategoriesManager.cs" />
     <Compile Include="Internal\Persistence\Contracts\IErrorsReportingManager.cs" />
     <Compile Include="Internal\Persistence\Contracts\IImagesManager.cs" />
     <Compile Include="Internal\Persistence\ErrorsReportingManager.cs" />

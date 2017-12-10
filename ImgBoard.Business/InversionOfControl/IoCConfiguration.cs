@@ -40,6 +40,7 @@ namespace ImgBoard.Business.InversionOfControl
             container.RegisterType<IPersistenceService, PersistenceService>();
 
             container.RegisterType<IImagesManager, ImagesManager>();
+            container.RegisterType<ICategoriesManager, CategoriesManager>();
         }
 
         public static void ConfigureForTests()
@@ -58,6 +59,7 @@ namespace ImgBoard.Business.InversionOfControl
             container.RegisterType<IPersistenceService, PersistenceService>();
 
             container.RegisterType<IImagesManager, ImagesManager>();
+            container.RegisterType<ICategoriesManager, CategoriesManager>();
         }
 
         public static void ConfigureErrorReporting()
