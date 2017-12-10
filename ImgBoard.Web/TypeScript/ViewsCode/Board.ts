@@ -21,7 +21,7 @@
                 percentPosition: true
             });
         });
-        $('#mainThrobber').toggle();
+        $('#mainThrobber').hide();
         $('.imagesGrid').fadeIn();
     }
 }
