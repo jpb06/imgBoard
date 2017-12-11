@@ -26,4 +26,14 @@
         }
     }
 
+    export class Category {
+        Id: number;
+        Title: string;
+
+        constructor(category: Models.ICategory) {
+            this.Id = category.Id;
+            this.Title = category.Title;
+        }
+    }
+
 }

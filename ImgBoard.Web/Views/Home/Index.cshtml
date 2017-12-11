@@ -41,6 +41,9 @@
                 <input type="text" class="form-control" data-bind="value: Term" />
                 <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
             </div>
+            <ul class="list-group" data-bind="foreach: Matches" id="search-matches" style="display:none;">
+                <li class="list-group-item" data-bind="text: Title, click: $parent.FetchImagesByMatch"></li>
+            </ul>
         </form>
     </div>
 </div>

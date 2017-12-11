@@ -26,6 +26,8 @@ namespace ImgBoard.Web
                         "~/Scripts/vendor/imagesloaded.pkgd.min.js",
                         "~/Scripts/Framework/Util/Util.js",
                         "~/Scripts/Framework/Models/FrontModels.js",
+                        "~/Scripts/Framework/ApiRequests/GetImagesByCategory.js",
+                        "~/Scripts/Framework/ApiRequests/GetMatchingCategories.js",
                         "~/Scripts/Framework/ApiRequests/GetImagesRequest.js",
                         "~/Scripts/Framework/ApiRequests/GetImagesMatchingCategory.js",
                         "~/Scripts/Framework/ViewModels/BoardViewModel.js",
