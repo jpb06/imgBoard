@@ -42,3 +42,8 @@
     background: #e2e2e2;
     text-align: center;
 }
+
+#main-throbber {
+    padding-top: 25px;
+    text-align: center;
+}
