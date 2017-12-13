@@ -38,7 +38,8 @@
                 <span class="input-group-btn">
                     <input type="submit" class="btn btn-default" value="Search" />
                 </span>
-                <input type="text" class="form-control" data-bind="value: Term" />
+                <input type="text" class="form-control" data-bind="textInput: SearchText" />
+
                 <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
             </div>
             <ul class="list-group" data-bind="foreach: Matches" id="search-matches" style="display:none;">

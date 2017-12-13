@@ -4,8 +4,10 @@
 
         Action: KnockoutObservable<string>;
         Images: KnockoutObservableArray<FrontModels.Image>;
-        Term: KnockoutObservable<string>;
+        SearchText: KnockoutObservable<string>;
         Matches: KnockoutObservableArray<FrontModels.Category>;
+
+        Term: KnockoutComputed<string>;
 
         Search: () => void;
         FetchImagesByMatch: (match: FrontModels.Category) => void;
@@ -15,14 +17,30 @@
         constructor(images: Array<Models.IImage>) {
             this.LastFetchedTerm = "";
             this.Action = ko.observable("All images");
-            this.Term = ko.observable("");
+            this.SearchText = ko.observable("");
             this.Images = ko.observableArray(images.map(el => new FrontModels.Image(el)));
             this.Matches = ko.observableArray([]);
+
+            this.Term = ko.pureComputed<string>(this.SearchText)
+                .extend({ rateLimit: { method: "notifyWhenChangesStop", timeout: 400 } });
+            this.Term.subscribe((term) => {
+                let timeStart = Date.now();
+                if (term.length === 0) {
+                    $('#search-matches').hide();
+                } else {
+                    if (this.LastFetchedTerm !== term) {
+                        ApiRequests.GetMatchingCategories(term, categories => {
+                            this.Matches(categories.map(el => new FrontModels.Category(el)));
+                            $('#search-matches').show();
+                        });
+                    }
+                }
+            }, this);
 
             this.Search = () => {
                 let timeStart = Date.now();
                 
-                let term = this.Term();
+                let term = this.SearchText();
 
                 if (term.length === 0) {
                     $('#main-throbber').show();
@@ -44,7 +62,7 @@
             this.FetchImagesByMatch = (match: FrontModels.Category) => {
                 let timeStart = Date.now();
 
-                this.Term(match.Title);
+                this.SearchText(match.Title);
                 this.LastFetchedTerm = match.Title;
 
                 $('#search-matches').hide();
