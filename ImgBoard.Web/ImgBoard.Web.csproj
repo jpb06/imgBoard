@@ -209,6 +209,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\custom\search.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
     <Content Include="Content\vendor\bootstrap.css" />
@@ -285,6 +286,7 @@
     <TypeScriptCompile Include="TypeScript\ApiRequests\GetMatchingCategories.ts" />
     <TypeScriptCompile Include="TypeScript\ApiRequests\GetImagesRequest.ts" />
     <TypeScriptCompile Include="TypeScript\ApiRequests\GetImagesMatchingCategory.ts" />
+    <TypeScriptCompile Include="TypeScript\Models\InternalModels.ts" />
     <TypeScriptCompile Include="TypeScript\Models\Models.ts" />
     <TypeScriptCompile Include="TypeScript\Util\Util.ts" />
     <TypeScriptCompile Include="TypeScript\ViewModels\BoardViewModel.ts" />
