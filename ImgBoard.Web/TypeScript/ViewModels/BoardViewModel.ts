@@ -1,23 +1,23 @@
 ﻿namespace ViewModels {
     export class BoardViewModel {
-        Action: KnockoutObservable<string>;
         Images: KnockoutObservableArray<FrontModels.Image>;
-        SearchText: KnockoutObservable<string>;
         Matches: KnockoutObservableArray<FrontModels.Category>;
-        
-        Term: KnockoutComputed<string>;
-
         SearchSettings: KnockoutObservableArray<InternalModels.SearchSetting>;
 
+        BreadCrumbText: KnockoutObservable<string>;
+        SearchText: KnockoutObservable<string>;
+        
+        Term: KnockoutComputed<string>;
+        
         Search: () => void;
         FetchImagesByMatch: (match: FrontModels.Category) => void;
         RemoveSearchSetting: (searchSetting: InternalModels.SearchSetting) => void;
 
-        ApplySearchResult: (action: string, images: Array<Models.IImage>, timeStart: number) => void;
+        ApplySearchResult: (images: Array<Models.IImage>, timeStart: number) => void;
         MatchesSearch: (term: string) => void;
 
         constructor(images: Array<Models.IImage>) {
-            this.Action = ko.observable("All images");
+            this.BreadCrumbText = ko.observable(images.length+" images");
             this.SearchText = ko.observable("");
             this.Images = ko.observableArray(images.map(el => new FrontModels.Image(el)));
             this.Matches = ko.observableArray([]);
@@ -45,7 +45,7 @@
                     $('.images-grid').hide();
 
                     ApiRequests.GetImagesRequest(images => {
-                        this.ApplySearchResult("All images", images, timeStart);
+                        this.ApplySearchResult(images, timeStart);
                     });
                 } else {
                     this.MatchesSearch(term);
@@ -68,7 +68,7 @@
                 $('.images-grid').hide();
 
                 ApiRequests.GetImagesByCategory(match.Id, images => {
-                    this.ApplySearchResult("Matches for : " + match.Title, images, timeStart);
+                    this.ApplySearchResult(images, timeStart);
                 });
             };
 
@@ -77,11 +77,10 @@
             };
 
             this.ApplySearchResult = (
-                action: string,
                 images: Array<Models.IImage>,
                 timeStart: number
             ) => {
-                this.Action(action);
+                this.BreadCrumbText(images.length + " images");
                 this.Images(images.map(el => new FrontModels.Image(el)));
                 Util.SetMinimumTimeout(timeStart, 500, ViewsCode.ResetBoardDom);
             };
