@@ -1,4 +1,5 @@
 ﻿using ImgBoard.Business.Exposed;
+using ImgBoard.Dal.Models.Main;
 using ImgBoard.Models.Main;
 using ImgBoard.Shared.Tests.Data.Database.DataSets;
 using NUnit.Framework;
@@ -36,67 +37,113 @@ namespace ImgBoard.Business.Tests.UnitTests.Exposed
         }
 
         [Test]
-        public async Task GetAsync()
+        public async Task FetchImagesAsync_ByOneCat()
         {
-            List<Image> images = await Images.GetAsync();
+            List<Image> images = await Images.GetAsync(
+                categoriesIds: new int[] { this.dataSet.CategoriesIds.ElementAt(0) }
+            );
 
-            Assert.AreEqual(7, images.Count);
+            Assert.AreEqual(3, images.Count);
         }
 
         [Test]
-        public async Task GetAsync_ByCategory()
+        public async Task FetchImagesAsync_ByTwoCats()
         {
-            List<Image> images = await Images.GetAsync(categoryId:this.dataSet.CategoriesIds.First());
-
-            Assert.AreEqual(2, images.Count);
-        }
-
-        [Test]
-        public async Task GetAsync_ByTag()
-        {
-            List<Image> images = await Images.GetAsync(tagsIds:new int[] { this.dataSet.TagsIds.ElementAt(0) });
-
-            Assert.AreEqual(4, images.Count);
-        }
-
-        [Test]
-        public async Task GetAsync_ByTags()
-        {
-            List<Image> images = await Images.GetAsync(tagsIds: new int[] 
-            {
-                this.dataSet.TagsIds.ElementAt(0),
-                this.dataSet.TagsIds.ElementAt(1)
-            });
-
-            Assert.AreEqual(7, images.Count);
-        }
-
-        [Test]
-        public async Task GetAsync_ByTagsAndCategory()
-        {
-            List<Image> images = await Images.GetAsync(tagsIds: new int[]
-            {
-                this.dataSet.TagsIds.ElementAt(0),
-                this.dataSet.TagsIds.ElementAt(1)
-            }, categoryId:this.dataSet.CategoriesIds.ElementAt(0));
-
-            Assert.AreEqual(2, images.Count);
-        }
-
-        [Test]
-        public async Task GetMatchAsync_Cat2()
-        {
-            List<Image> images = await Images.GetMatchAsync("2");
-
-            Assert.AreEqual(2, images.Count);
-        }
-
-        [Test]
-        public async Task GetMatchAsync_AllCats()
-        {
-            List<Image> images = await Images.GetMatchAsync("Test Category");
+            List<Image> images = await Images.GetAsync(
+                categoriesIds: new int[] 
+                {
+                    this.dataSet.CategoriesIds.ElementAt(0),
+                    this.dataSet.CategoriesIds.ElementAt(1)
+                }
+            );
 
             Assert.AreEqual(5, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByOneTag()
+        {
+            List<Image> images = await Images.GetAsync(
+                tagsIds: new int[] { this.dataSet.TagsIds.ElementAt(0) }
+            );
+
+            Assert.AreEqual(5, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByTwoTags()
+        {
+            List<Image> images = await Images.GetAsync(
+                tagsIds: new int[] 
+                { 
+                    this.dataSet.TagsIds.ElementAt(0),
+                    this.dataSet.TagsIds.ElementAt(1)
+                });
+
+            Assert.AreEqual(8, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByName()
+        {
+            List<Image> images = await Images.GetAsync(name: "image");
+
+            Assert.AreEqual(7, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByDescription()
+        {
+            List<Image> images = await Images.GetAsync(description: "Description");
+
+            Assert.AreEqual(5, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByUploader()
+        {
+            List<Image> images = await Images.GetAsync(uploader: "a");
+
+            Assert.AreEqual(5, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_ByExtension()
+        {
+            List<Image> images = await Images.GetAsync(extension: "jpg");
+
+            Assert.AreEqual(3, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_All()
+        {
+            List<Image> images = await Images.GetAsync(
+                tagsIds: new int[] { this.dataSet.TagsIds.ElementAt(0) },
+                categoriesIds: new int[] { this.dataSet.CategoriesIds.ElementAt(0) },
+                name: "image",
+                description: "image",
+                uploader: "a",
+                extension: "jpg"
+            );
+
+            Assert.AreEqual(1, images.Count);
+        }
+
+        [Test]
+        public async Task FetchImagesAsync_Half()
+        {
+            List<Image> images = await Images.GetAsync(
+                categoriesIds: new int[] 
+                {
+                    this.dataSet.CategoriesIds.ElementAt(0),
+                    this.dataSet.CategoriesIds.ElementAt(1)
+                },
+                description: "image",
+                extension: "jpg"
+            );
+
+            Assert.AreEqual(1, images.Count);
         }
     }
 }
