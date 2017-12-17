@@ -9,9 +9,12 @@ namespace ImgBoard.Business.Internal.Persistence.Contracts
 {
     internal interface IImagesManager
     {
-        Task<List<DbImage>> FetchImagesAsync();
-        Task<List<DbImage>> FetchImagesByCategoryAsync(int categoryId);
-        Task<List<DbImage>> FetchTaggedImagesAsync(int[] tagsIds);
-        Task<List<DbImage>> FetchImagesMatchingCategory(string term);
+        Task<List<DbImage>> FetchImagesAsync(
+            int[] tagsIds = null,
+            int[] categoriesIds = null,
+            string name = null,
+            string description = null,
+            string uploader = null,
+            string extension = null);
     }
 }

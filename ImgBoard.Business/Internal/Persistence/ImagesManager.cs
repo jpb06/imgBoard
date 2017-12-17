@@ -2,13 +2,16 @@
 using ImgBoard.Business.Exceptions.CustomTypes;
 using ImgBoard.Business.Exposed;
 using ImgBoard.Business.Internal.Persistence.Contracts;
+using ImgBoard.Business.Util;
 using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
 using ImgBoard.Dal.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ImgBoard.Business.Util;
 
 namespace ImgBoard.Business.Internal.Persistence
 {
@@ -21,32 +24,39 @@ namespace ImgBoard.Business.Internal.Persistence
             this.persistenceService = persistenceService;
         }
 
-        public async Task<List<DbImage>> FetchImagesAsync()
+        public async Task<List<DbImage>> FetchImagesAsync(
+            int[] tagsIds = null,
+            int[] categoriesIds = null,
+            string name = null,
+            string description = null,
+            string uploader = null,
+            string extension = null)
         {
-            var data = await this.persistenceService.GetAsync<DbImage>();
+            List<Expression<Func<DbImage, bool>>> filters = new List<Expression<Func<DbImage, bool>>>();
 
-            return data.ToList();
-        }
+            if (tagsIds != null)
+                filters.Add(i => i.Tags.Any(t => tagsIds.Contains(t.Id)));
 
-        public async Task<List<DbImage>> FetchImagesByCategoryAsync(int categoryId)
-        {
-            var data = await this.persistenceService.GetAsync<DbImage>(i => i.IdCategory == categoryId);
+            if (categoriesIds != null)
+                filters.Add(i => i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value));
 
-            return data.ToList();
-        }
-        public async Task<List<DbImage>> FetchTaggedImagesAsync(int[] tagsIds)
-        {
-            if (tagsIds == null || tagsIds.Length == 0)
-                throw new BusinessException(BusinessErrorType.NoTagsSupplied);
+            if (name != null)
+                filters.Add(i => i.Name != null && i.Name.Contains(name));
 
-            var data = await this.persistenceService.GetAsync<DbTag>(t => tagsIds.Contains(t.Id));
+            if (description != null)
+                filters.Add(i => i.Description != null && i.Description.Contains(description));
 
-            return data.SelectMany(t => t.Images).ToList();
-        }
+            if (uploader != null)
+                filters.Add(i => i.Uploader.Login == uploader);
 
-        public async Task<List<DbImage>> FetchImagesMatchingCategory(string term)
-        {
-            var data = await this.persistenceService.GetAsync<DbImage>(filter: el => el.Category.Title.Contains(term));
+            if (extension != null)
+                filters.Add(i => i.FileExtension == extension);
+
+            var filter = filters.FirstOrDefault();
+            for(int i = 1; i < filters.Count; i++)
+                filter = filter.And(filters.ElementAt(i));
+
+            var data = await this.persistenceService.GetAsync<DbImage>(filter);
 
             return data;
         }

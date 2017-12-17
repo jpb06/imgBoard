@@ -14,45 +14,25 @@ namespace ImgBoard.Business.Exposed
 {
     public static class Images
     {
-        public static async Task<List<Image>> GetAsync(int[] tagsIds = null, int? categoryId = null)
-        {
-            using (IUnityContainer unit = IoCConfiguration.container.CreateChildContainer())
-            {
-                IImagesManager manager = unit.Resolve<IImagesManager>();
-                
-                IEnumerable<DbImage> images = null;
-
-                if (tagsIds != null)
-                {
-                    images = await manager.FetchTaggedImagesAsync(tagsIds);
-
-                    if(categoryId.HasValue)
-                        images = images.Where(i => i.IdCategory == categoryId);
-                }
-                else if (categoryId.HasValue)
-                {
-                    images = await manager.FetchImagesByCategoryAsync(categoryId.Value);
-                }
-                else
-                {
-                    images = await manager.FetchImagesAsync();
-                }
-
-                return images.Select(el => el.ToExposed())
-                             .ToList();
-            }
-        }
-
-        public static async Task<List<Image>> GetMatchAsync(string term)
+        public static async Task<List<Image>> GetAsync(
+            int[] tagsIds = null, 
+            int[] categoriesIds = null,
+            string name = null,
+            string description = null,
+            string uploader = null,
+            string extension = null)
         {
             using (IUnityContainer unit = IoCConfiguration.container.CreateChildContainer())
             {
                 IImagesManager manager = unit.Resolve<IImagesManager>();
 
-                IEnumerable<DbImage> images = await manager.FetchImagesMatchingCategory(term);
+                IEnumerable<DbImage> images = await manager.FetchImagesAsync(
+                    tagsIds, categoriesIds, name, description, uploader, extension
+                );
                 
-                return images.Select(el => el.ToExposed())
-                             .ToList();
+                return images
+                    .Select(el => el.ToExposed())
+                    .ToList();
             }
         }
     }

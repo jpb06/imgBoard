@@ -85,6 +85,8 @@
     <Compile Include="Internal\Persistence\ImagesManager.cs" />
     <Compile Include="InversionOfControl\IoCConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ExpressionExtensions.cs" />
+    <Compile Include="Util\ParameterRebinder.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
