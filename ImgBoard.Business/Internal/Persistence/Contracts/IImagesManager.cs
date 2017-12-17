@@ -1,4 +1,5 @@
 ﻿using ImgBoard.Dal.Models.Main;
+using ImgBoard.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace ImgBoard.Business.Internal.Persistence.Contracts
 {
     internal interface IImagesManager
     {
-        Task<List<DbImage>> FetchImagesAsync(
+        Task<List<Image>> FetchImagesAsync(
             int[] tagsIds = null,
             int[] categoriesIds = null,
             string name = null,

@@ -1,7 +1,4 @@
-﻿using ImgBoard.Business.Exceptions;
-using ImgBoard.Business.Exceptions.CustomTypes;
-using ImgBoard.Business.Exposed;
-using ImgBoard.Business.Internal.Persistence.Contracts;
+﻿using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Business.Util;
 using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
 using ImgBoard.Dal.Models.Main;
@@ -9,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
-using ImgBoard.Business.Util;
+using ImgBoard.Business.Internal.Model;
+using ImgBoard.Models.Main;
 
 namespace ImgBoard.Business.Internal.Persistence
 {
@@ -24,7 +21,7 @@ namespace ImgBoard.Business.Internal.Persistence
             this.persistenceService = persistenceService;
         }
 
-        public async Task<List<DbImage>> FetchImagesAsync(
+        public async Task<List<Image>> FetchImagesAsync(
             int[] tagsIds = null,
             int[] categoriesIds = null,
             string name = null,
@@ -58,7 +55,9 @@ namespace ImgBoard.Business.Internal.Persistence
 
             var data = await this.persistenceService.GetAsync<DbImage>(filter);
 
-            return data;
+            return data
+                .Select(el => el.ToExposed())
+                .ToList(); ;
         }
     }
 }

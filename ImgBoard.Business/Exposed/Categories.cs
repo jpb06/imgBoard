@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
-using ImgBoard.Business.Internal.Model;
 
 namespace ImgBoard.Business.Exposed
 {
@@ -20,10 +19,9 @@ namespace ImgBoard.Business.Exposed
             {
                 ICategoriesManager manager = unit.Resolve<ICategoriesManager>();
 
-                IEnumerable<DbCategory> categories = await manager.FetchCategoriesWithMatchingTitle(term);
+                List<Category> categories = await manager.FetchCategoriesWithMatchingTitle(term);
 
-                return categories.Select(el => el.ToExposed())
-                                 .ToList();
+                return categories;
             }
         }
     }

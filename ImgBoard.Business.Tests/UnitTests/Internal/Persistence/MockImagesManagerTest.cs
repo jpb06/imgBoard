@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImgBoard.Business.Internal.Model;
+using ImgBoard.Models.Main;
 
 namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
 {
@@ -28,12 +30,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, It.IsAny<int[]>(), null, null, null, null))
                 .Returns<int[], int[], string, string, string, string> (
                     (tagsIds, categoriesIds, name, description, uploader, extension) => 
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(categoriesIds:new int[] { 1 });
+            List<Image> images = await this.imagesManager.FetchImagesAsync(categoriesIds:new int[] { 1 });
 
             Assert.AreEqual(6, images.Count);
         }
@@ -48,12 +54,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, It.IsAny<int[]>(), null, null, null, null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(categoriesIds: new int[] { 1, 2 });
+            List<Image> images = await this.imagesManager.FetchImagesAsync(categoriesIds: new int[] { 1, 2 });
 
             Assert.AreEqual(7, images.Count);
         }
@@ -68,12 +78,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(It.IsAny<int[]>(), null, null, null, null, null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            i.Tags.Any(t => tagsIds.Contains(t.Id))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => i.Tags.Any(t => tagsIds.Contains(t.Id)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(tagsIds: new int[] { 1 });
+            List<Image> images = await this.imagesManager.FetchImagesAsync(tagsIds: new int[] { 1 });
 
             Assert.AreEqual(5, images.Count);
         }
@@ -88,12 +102,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(It.IsAny<int[]>(), null, null, null, null, null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            i.Tags.Any(t => tagsIds.Contains(t.Id))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => i.Tags.Any(t => tagsIds.Contains(t.Id)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(tagsIds: new int[] { 1, 3 });
+            List<Image> images = await this.imagesManager.FetchImagesAsync(tagsIds: new int[] { 1, 3 });
 
             Assert.AreEqual(6, images.Count);
         }
@@ -108,12 +126,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, null, It.IsAny<string>(), null, null, null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            (i.Name != null && i.Name.Contains(name))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => (i.Name != null && i.Name.Contains(name)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(name: "name");
+            List<Image> images = await this.imagesManager.FetchImagesAsync(name: "name");
 
             Assert.AreEqual(9, images.Count);
         }
@@ -128,12 +150,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, null, null, It.IsAny<string>(), null, null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            (i.Description != null && i.Description.Contains(description))
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => (i.Description != null && i.Description.Contains(description)))
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(description: "description");
+            List<Image> images = await this.imagesManager.FetchImagesAsync(description: "description");
 
             Assert.AreEqual(6, images.Count);
         }
@@ -148,12 +174,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, null, null, null, It.IsAny<string>(), null))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            i.Uploader.Login.StartsWith(uploader)
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                            .Where(i => i.Uploader.Login.StartsWith(uploader))
+                            .Select(el => el.ToExposed())
+                            .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(uploader: "a");
+            List<Image> images = await this.imagesManager.FetchImagesAsync(uploader: "a");
 
             Assert.AreEqual(4, images.Count);
         }
@@ -168,12 +198,16 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                 .Setup(s => s.FetchImagesAsync(null, null, null, null, null, It.IsAny<string>()))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            i.FileExtension == extension
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => i.FileExtension == extension)
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(extension: "jpg");
+            List<Image> images = await this.imagesManager.FetchImagesAsync(extension: "jpg");
 
             Assert.AreEqual(4, images.Count);
         }
@@ -194,17 +228,22 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                     It.IsAny<string>()))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) => 
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i => 
-                            (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)) &&
-                            (i.Tags.Any(t => tagsIds.Contains(t.Id))) &&
-                            (i.Name != null && i.Name.Contains(name)) &&
-                            (i.Description != null && i.Description.Contains(description)) &&
-                            i.Uploader.Login.StartsWith(uploader) &&
-                            i.FileExtension == extension
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i => 
+                                    (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)) &&
+                                    (i.Tags.Any(t => tagsIds.Contains(t.Id))) &&
+                                    (i.Name != null && i.Name.Contains(name)) &&
+                                    (i.Description != null && i.Description.Contains(description)) &&
+                                    i.Uploader.Login.StartsWith(uploader) &&
+                                    i.FileExtension == extension)
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(
+            List<Image> images = await this.imagesManager.FetchImagesAsync(
                 tagsIds: new int[] { 1, 3 },
                 categoriesIds: new int[] { 3 },
                 name: "Image", 
@@ -232,14 +271,19 @@ namespace ImgBoard.Business.Tests.UnitTests.Internal.Persistence
                     It.IsAny<string>()))
                 .Returns<int[], int[], string, string, string, string>(
                     (tagsIds, categoriesIds, name, description, uploader, extension) =>
-                        Task.FromResult<List<DbImage>>(dataSet.Images.Where(i =>
-                            (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)) &&
-                            (i.Name != null && i.Name.Contains(name)) &&
-                            i.FileExtension == extension
-                        ).ToList()));
+                        Task.FromResult<List<Image>>(
+                            dataSet.Images
+                                .Where(i =>
+                                    (i.IdCategory.HasValue && categoriesIds.Contains(i.IdCategory.Value)) &&
+                                    (i.Name != null && i.Name.Contains(name)) &&
+                                    i.FileExtension == extension)
+                                .Select(el => el.ToExposed())
+                                .ToList()
+                        )
+                );
             this.imagesManager = mockService.Object;
 
-            List<DbImage> images = await this.imagesManager.FetchImagesAsync(
+            List<Image> images = await this.imagesManager.FetchImagesAsync(
                 categoriesIds: new int[] { 3 },
                 name: "Image",
                 extension: "gif"

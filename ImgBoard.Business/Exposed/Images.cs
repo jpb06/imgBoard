@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
-using ImgBoard.Business.Internal.Model;
 using ImgBoard.Models.Main;
 
 namespace ImgBoard.Business.Exposed
@@ -26,13 +25,11 @@ namespace ImgBoard.Business.Exposed
             {
                 IImagesManager manager = unit.Resolve<IImagesManager>();
 
-                IEnumerable<DbImage> images = await manager.FetchImagesAsync(
+                List<Image> images = await manager.FetchImagesAsync(
                     tagsIds, categoriesIds, name, description, uploader, extension
                 );
-                
-                return images
-                    .Select(el => el.ToExposed())
-                    .ToList();
+
+                return images;
             }
         }
     }

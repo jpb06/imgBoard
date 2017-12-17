@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ImgBoard.Dal.Models.Main;
 using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
+using ImgBoard.Models.Main;
+using ImgBoard.Business.Internal.Model;
 
 namespace ImgBoard.Business.Internal.Persistence
 {
@@ -18,11 +20,13 @@ namespace ImgBoard.Business.Internal.Persistence
             this.persistenceService = persistenceService;
         }
 
-        public async Task<List<DbCategory>> FetchCategoriesWithMatchingTitle(string term)
+        public async Task<List<Category>> FetchCategoriesWithMatchingTitle(string term)
         {
             var data = await this.persistenceService.GetAsync<DbCategory>(filter: el => el.Title.Contains(term));
 
-            return data;
+            return data
+                .Select(el => el.ToExposed())
+                .ToList(); ;
         }
     }
 }
