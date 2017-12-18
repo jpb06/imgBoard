@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\GetImagesParameters.cs" />
     <Compile Include="Main\Category.cs" />
     <Compile Include="Main\Comment.cs" />
     <Compile Include="Main\Image.cs" />
