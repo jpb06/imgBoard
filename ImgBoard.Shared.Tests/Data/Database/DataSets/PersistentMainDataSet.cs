@@ -45,29 +45,33 @@ namespace ImgBoard.Shared.Tests.Data.Database.DataSets
         {
             this.UsersIds.Add(this.users.Create("a", "a", "User 1"));
             this.UsersIds.Add(this.users.Create("b", "b", "User 2"));
+            this.UsersIds.Add(this.users.Create("aa", "aa", "User 3"));
 
             this.CategoriesIds.Add(this.categories.Create("Test Category 1"));
             this.CategoriesIds.Add(this.categories.Create("Test Category 2"));
             this.CategoriesIds.Add(this.categories.Create("Test Category 3"));
 
-            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(0), "image 1", "image 1 Description", Guid.NewGuid()));
-            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(1), this.UsersIds.ElementAt(0), "image 2", null, Guid.NewGuid()));
-            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(2), this.UsersIds.ElementAt(0), "image 3", "image 3 Description", Guid.NewGuid()));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(0), "image 1", "image 1 Description", Guid.NewGuid(), "jpg"));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(1), this.UsersIds.ElementAt(0), "image 2", null, Guid.NewGuid(), "png"));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(2), this.UsersIds.ElementAt(0), "image 3", "image 3 Description", Guid.NewGuid(), "gif"));
 
-            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(1), "image 4", null, Guid.NewGuid()));
-            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(1), this.UsersIds.ElementAt(1), "image 5", "image 5 Description", Guid.NewGuid()));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(1), "image 4", null, Guid.NewGuid(), "jpg"));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(1), this.UsersIds.ElementAt(1), "image 5", "image 5 Description", Guid.NewGuid(), "gif"));
 
-            this.ImagesIds.Add(this.images.Create(null, this.UsersIds.ElementAt(0), null, "image 6 Description", Guid.NewGuid()));
-            this.ImagesIds.Add(this.images.Create(null, this.UsersIds.ElementAt(1), "Image 7", null, Guid.NewGuid()));
+            this.ImagesIds.Add(this.images.Create(null, this.UsersIds.ElementAt(0), null, "image 6 Description", Guid.NewGuid(), "png"));
+            this.ImagesIds.Add(this.images.Create(null, this.UsersIds.ElementAt(1), "Image 7", null, Guid.NewGuid(), "jpg"));
 
-            this.TagsIds.Add(this.tags.Create("Good"));
-            this.TagsIds.Add(this.tags.Create("Bad"));
-            this.TagsIds.Add(this.tags.Create("Sad"));
+            this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(0), "image 8", "image 8 Description", Guid.NewGuid(), "png"));
+
+            this.TagsIds.Add(this.tags.Create("Tag Good"));
+            this.TagsIds.Add(this.tags.Create("Tag Bad"));
+            this.TagsIds.Add(this.tags.Create("Tag Sad"));
 
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(0), this.TagsIds.ElementAt(0)));
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(3), this.TagsIds.ElementAt(0)));
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(5), this.TagsIds.ElementAt(0)));
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(6), this.TagsIds.ElementAt(0)));
+            this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(7), this.TagsIds.ElementAt(0)));
 
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(1), this.TagsIds.ElementAt(1)));
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(2), this.TagsIds.ElementAt(1)));

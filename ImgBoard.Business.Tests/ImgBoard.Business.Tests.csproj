@@ -88,9 +88,13 @@
     <Compile Include="UnitTests\Exposed\CategoriesTest.cs" />
     <Compile Include="UnitTests\Exposed\ErrorsLoggingTest.cs" />
     <Compile Include="UnitTests\Exposed\ImagesTest.cs" />
+    <Compile Include="UnitTests\Exposed\TagsTest.cs" />
+    <Compile Include="UnitTests\Exposed\UsersTest.cs" />
     <Compile Include="UnitTests\Internal\Persistence\MockCategoriesManagerTest.cs" />
     <Compile Include="UnitTests\Internal\Persistence\MockErrorsReportingManagerTest.cs" />
     <Compile Include="UnitTests\Internal\Persistence\MockImagesManagerTest.cs" />
+    <Compile Include="UnitTests\Internal\Persistence\MockTagsManagerTest.cs" />
+    <Compile Include="UnitTests\Internal\Persistence\MockUsersManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImgBoard.Business\ImgBoard.Business.csproj">

@@ -1,6 +1,5 @@
 ﻿using ImgBoard.Business.Internal.Persistence.Contracts;
 using ImgBoard.Business.InversionOfControl;
-using ImgBoard.Dal.Models.Main;
 using ImgBoard.Models.Main;
 using System;
 using System.Collections.Generic;
@@ -11,17 +10,17 @@ using Unity;
 
 namespace ImgBoard.Business.Exposed
 {
-    public static class Categories
+    public static class Tags
     {
-        public static async Task<List<Category>> GetMatchAsync(string term)
+        public static async Task<List<Tag>> GetMatchAsync(string term)
         {
             using (IUnityContainer unit = IoCConfiguration.container.CreateChildContainer())
             {
-                ICategoriesManager manager = unit.Resolve<ICategoriesManager>();
+                ITagsManager manager = unit.Resolve<ITagsManager>();
 
-                List<Category> categories = await manager.FetchCategoriesWithMatchingTitle(term);
+                List<Tag> tags = await manager.FetchTagsWithMatchingName(term);
 
-                return categories;
+                return tags;
             }
         }
     }

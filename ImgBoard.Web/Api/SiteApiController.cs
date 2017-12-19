@@ -3,30 +3,30 @@ using System.Web.Http;
 using ImgBoard.Models.Main;
 using ImgBoard.Business.Exposed;
 using System.Threading.Tasks;
+using ImgBoard.Models.Api;
 
 namespace ImgBoard.Web.Api
 {
     public class SiteApiController : ApiController
     {
         [HttpGet]
-        [Route("siteapi/getimages")]
-        public async Task<IEnumerable<Image>> GetImages()
+        [Route("siteapi/getallimages")]
+        public async Task<IEnumerable<Image>> GetAllImages()
         {
             return await Images.GetAsync();
         }
 
-        [HttpGet]
-        [Route("siteapi/getimagesmatchingcategory/{term}")]
-        public async Task<IEnumerable<Image>> GetImagesMatchingCategory(string term)
+        [HttpPost]
+        [Route("siteapi/getimages")]
+        public async Task<IEnumerable<Image>> GetImages(GetImagesParameters parameters)
         {
-            return await Images.GetMatchAsync(term);
-        }
-
-        [HttpGet]
-        [Route("siteapi/getimagesbycategory/{id}")]
-        public async Task<IEnumerable<Image>> GetImagesByCategory(int id)
-        {
-            return await Images.GetAsync(categoryId:id);
+            return await Images.GetAsync(
+                parameters.TagsIds, 
+                parameters.CategoriesIds, 
+                parameters.Name, 
+                parameters.Description, 
+                parameters.Uploader, 
+                parameters.Extension);
         }
 
         [HttpGet]

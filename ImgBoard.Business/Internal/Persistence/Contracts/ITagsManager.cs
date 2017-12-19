@@ -1,5 +1,4 @@
-﻿using ImgBoard.Dal.Models.Main;
-using ImgBoard.Models.Main;
+﻿using ImgBoard.Models.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ImgBoard.Business.Internal.Persistence.Contracts
 {
-    internal interface ICategoriesManager
+    internal interface ITagsManager
     {
-        Task<List<Category>> FetchCategoriesWithMatchingTitle(string term);
+        Task<List<Tag>> FetchTagsWithMatchingName(string term);
     }
 }

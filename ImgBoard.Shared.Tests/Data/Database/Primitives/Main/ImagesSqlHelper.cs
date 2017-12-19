@@ -16,22 +16,23 @@ namespace ImgBoard.Shared.Tests.Data.Database.Primitives.Main
             this.connection = connection;
         }
 
-        public int Create(int? idCategory, int idUser, string name, string description, Guid fileId)
+        public int Create(int? idCategory, int idUser, string name, string description, Guid fileId, string extension)
         {
-            SqlCommand command = new SqlCommand("INSERT INTO [dbo].[Images] ([IdCategory], [IdUploader], [Name], [Description], [FileId]) " +
-                                                "output inserted.Id VALUES (@idCategory, @idUser, @name, @description, @fileId);", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO [dbo].[Images] ([IdCategory], [IdUploader], [Name], [Description], [FileId], [FileExtension]) " +
+                                                "output inserted.Id VALUES (@idCategory, @idUser, @name, @description, @fileId, @extension);", connection);
             command.Parameters.AddWithValue("@idCategory", idCategory ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@idUser", idUser);
             command.Parameters.AddWithValue("@name", name ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@description", description ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@fileId", fileId);
+            command.Parameters.AddWithValue("@extension", extension);
             return (int)command.ExecuteScalar();
         }
 
-        public void Modify(int id, int? idCategory, int idUser, string name, string description, Guid fileId)
+        public void Modify(int id, int? idCategory, int idUser, string name, string description, Guid fileId, string extension)
         {
             SqlCommand command = new SqlCommand("UPDATE [dbo].[Images] "+
-                                                "SET [IdCategory] = @idCategory, [IdUploader] = @idUser, [Name] = @name, [Description] = @description, [FileId] = @fileId " +
+                                                "SET [IdCategory] = @idCategory, [IdUploader] = @idUser, [Name] = @name, [Description] = @description, [FileId] = @fileId, [FileExtension] = @extension " +
                                                 "WHERE [Id] = @id;", connection);
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@idCategory", idCategory ?? (object)DBNull.Value);
@@ -39,6 +40,7 @@ namespace ImgBoard.Shared.Tests.Data.Database.Primitives.Main
             command.Parameters.AddWithValue("@name", name ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@description", description ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@fileId", fileId);
+            command.Parameters.AddWithValue("@extension", extension);
             command.ExecuteNonQuery();
         }
 

@@ -1,0 +1,41 @@
+﻿.search-box {
+    margin: 0 3px 3px 3px;
+    padding: 7px 3px 11px 3px;
+    border-radius: 10px;
+    background: #e2e2e2;
+    text-align: center;
+}
+
+.search-setting {
+    display: inline-block;
+    border: 2px solid;
+    border-color: #b7b7b7;
+    border-radius: 25px;
+    float: left;
+    padding: 2px 10px;
+    margin-right: 1px;
+    background-color: white;
+    margin-top: 4px;
+}
+
+    .search-setting * {
+        min-height: 22px;
+        line-height: 22px;
+    }
+
+    .search-setting .search-setting-close {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .search-setting .search-setting-type {
+        border-left: 2px solid;
+        border-color: #b7b7b7;
+        padding-left: 7px;
+        display: inline-block;
+        font-weight:bold;
+    }
+
+.search-settings {
+    margin-bottom: 10px;
+}

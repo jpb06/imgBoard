@@ -28,7 +28,7 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
 
         public void Populate()
         {
-            #region Articles
+            #region Categories
             var categories = new List<DbCategory>()
             {
                 new DbCategory
@@ -84,6 +84,14 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Login = "b",
                     Password = "b",
                     UserName = "User B"
+                },
+                new DbUser
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 3,
+                    Login = "aa",
+                    Password = "aa",
+                    UserName = "User AA"
                 }
             });
             #endregion
@@ -100,8 +108,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 1 name",
                     Description = "Image 1 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "jpg",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -112,8 +122,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 2 name",
                     Description = "Image 2 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "jpg",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -124,8 +136,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 3 name",
                     Description = null,
                     FileId = Guid.NewGuid(),
+                    FileExtension = "jpg",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -136,8 +150,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = null,
                     Description = null,
                     FileId = Guid.NewGuid(),
+                    FileExtension = "jpg",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(0)
                 },
                 new DbImage
                 {
@@ -148,8 +164,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 5 name",
                     Description = "Image 5 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "png",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -160,8 +178,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 5 name",
                     Description = null,
                     FileId = Guid.NewGuid(),
+                    FileExtension = "png",
 
-                    Category = categories.ElementAt(0)
+                    Category = categories.ElementAt(0),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -172,8 +192,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 7 name",
                     Description = "Image 7 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "png",
 
-                    Category = categories.ElementAt(1)
+                    Category = categories.ElementAt(1),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -184,8 +206,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 8 name",
                     Description = "Image 8 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "gif",
 
-                    Category = categories.ElementAt(2)
+                    Category = categories.ElementAt(2),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -196,8 +220,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 9 name",
                     Description = "Image 9 description",
                     FileId = Guid.NewGuid(),
+                    FileExtension = "gif",
 
-                    Category = categories.ElementAt(2)
+                    Category = categories.ElementAt(2),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -208,8 +234,10 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = "Image 8 name",
                     Description = null,
                     FileId = Guid.NewGuid(),
+                    FileExtension = "png",
 
-                    Category = categories.ElementAt(2)
+                    Category = categories.ElementAt(2),
+                    Uploader = this.Users.ElementAt(1)
                 },
                 new DbImage
                 {
@@ -220,35 +248,43 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Name = null,
                     Description = null,
                     FileId = Guid.NewGuid(),
+                    FileExtension = "gif",
 
-                    Category = categories.ElementAt(2)
+                    Category = categories.ElementAt(2),
+                    Uploader = this.Users.ElementAt(1)
                 }
             });
+            #endregion
 
+            #region Tags
             this.Tags.AddRange(new List<DbTag>()
             {
                 new DbTag
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 1,
-                    Name = "Super",
+                    Name = "Tag Super",
                     Images = this.Images.Where(el => el.Id % 2 == 0).ToList()
                 },
                 new DbTag
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 2,
-                    Name = "Meh",
+                    Name = "Tag Meh",
                     Images = this.Images.Where(el => el.Id % 2 == 1).ToList()
                 },
                 new DbTag
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 3,
-                    Name = "Blah",
+                    Name = "Tag Blah",
                     Images = this.Images.Where(el => el.Id > 10).ToList()
                 },
             });
+
+            this.Images.Where(i => i.Id % 2 == 0).Select(i => { i.Tags = new List<DbTag>() { this.Tags.ElementAt(0) }; return i; }).ToList();
+            this.Images.Where(i => i.Id % 2 == 1).Select(i => { i.Tags = new List<DbTag>() { this.Tags.ElementAt(1) }; return i; }).ToList();
+            this.Images.Where(i => i.Id > 10).Select(i => { i.Tags.Add(this.Tags.ElementAt(2)); return i; }).ToList();
             #endregion
         }
     }

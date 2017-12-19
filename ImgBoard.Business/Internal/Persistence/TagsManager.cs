@@ -1,28 +1,26 @@
 ﻿using ImgBoard.Business.Internal.Persistence.Contracts;
-using System;
+using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
+using ImgBoard.Dal.Models.Main;
+using ImgBoard.Models.Main;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using ImgBoard.Dal.Models.Main;
-using ImgBoard.Dal.Manipulation.Services.Main.Contracts;
-using ImgBoard.Models.Main;
 using ImgBoard.Business.Internal.Model;
 
 namespace ImgBoard.Business.Internal.Persistence
 {
-    internal class CategoriesManager : ICategoriesManager
+    internal class TagsManager : ITagsManager
     {
         private IPersistenceService persistenceService;
 
-        public CategoriesManager(IPersistenceService persistenceService)
+        public TagsManager(IPersistenceService persistenceService)
         {
             this.persistenceService = persistenceService;
         }
 
-        public async Task<List<Category>> FetchCategoriesWithMatchingTitle(string term)
+        public async Task<List<Tag>> FetchTagsWithMatchingName(string term)
         {
-            var data = await this.persistenceService.GetAsync<DbCategory>(filter: el => el.Title.Contains(term));
+            var data = await this.persistenceService.GetAsync<DbTag>(filter: el => el.Name.Contains(term));
 
             return data
                 .Select(el => el.ToExposed())

@@ -1,10 +1,10 @@
 ﻿namespace ApiRequests {
-    export function GetImagesMatchingCategory(term: string,
-                                              done: (images: Array<Models.IImage>) => any, fail?: () => any) {
+    export function GetImages(parameters: ApiModels.GetImagesParameters, done: (images: Array<Models.IImage>) => any, fail?: () => any) {
         let settings = {
-            url: '/imgboard/siteapi/getimagesmatchingcategory/'+term,
-            type: 'GET',
-            dataType: 'json'
+            url: '/imgboard/siteapi/getimages',
+            type: 'POST',
+            dataType: 'json', 
+            data: parameters
         };
 
         $.ajax(settings)

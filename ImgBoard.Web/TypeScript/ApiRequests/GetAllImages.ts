@@ -1,7 +1,7 @@
 ﻿namespace ApiRequests {
-    export function GetImagesRequest(done: (images: Array<Models.IImage>) => any, fail?: () => any) {
+    export function GetAllImages(done: (images: Array<Models.IImage>) => any, fail?: () => any) {
         let settings = {
-            url: '/imgboard/siteapi/getimages',
+            url: '/imgboard/siteapi/getallimages',
             type: 'GET',
             dataType: 'json'
         };
@@ -17,4 +17,6 @@
                 }
             });
     }
+
+    
 }
