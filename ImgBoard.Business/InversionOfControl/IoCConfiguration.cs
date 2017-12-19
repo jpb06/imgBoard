@@ -41,6 +41,8 @@ namespace ImgBoard.Business.InversionOfControl
 
             container.RegisterType<IImagesManager, ImagesManager>();
             container.RegisterType<ICategoriesManager, CategoriesManager>();
+            container.RegisterType<ITagsManager, TagsManager>();
+            container.RegisterType<IUsersManager, UsersManager>();
         }
 
         public static void ConfigureForTests()
@@ -60,6 +62,8 @@ namespace ImgBoard.Business.InversionOfControl
 
             container.RegisterType<IImagesManager, ImagesManager>();
             container.RegisterType<ICategoriesManager, CategoriesManager>();
+            container.RegisterType<ITagsManager, TagsManager>();
+            container.RegisterType<IUsersManager, UsersManager>();
         }
 
         public static void ConfigureErrorReporting()
