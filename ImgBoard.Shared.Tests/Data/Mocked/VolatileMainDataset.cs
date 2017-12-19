@@ -84,6 +84,14 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                     Login = "b",
                     Password = "b",
                     UserName = "User B"
+                },
+                new DbUser
+                {
+                    RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
+                    Id = 3,
+                    Login = "aa",
+                    Password = "aa",
+                    UserName = "User AA"
                 }
             });
             #endregion
@@ -255,21 +263,21 @@ namespace ImgBoard.Shared.Tests.Data.Mocked
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 1,
-                    Name = "Super",
+                    Name = "Tag Super",
                     Images = this.Images.Where(el => el.Id % 2 == 0).ToList()
                 },
                 new DbTag
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 2,
-                    Name = "Meh",
+                    Name = "Tag Meh",
                     Images = this.Images.Where(el => el.Id % 2 == 1).ToList()
                 },
                 new DbTag
                 {
                     RowVersion = new byte[] {0, 0, 0, 0, 0, 0, 0, 0},
                     Id = 3,
-                    Name = "Blah",
+                    Name = "Tag Blah",
                     Images = this.Images.Where(el => el.Id > 10).ToList()
                 },
             });

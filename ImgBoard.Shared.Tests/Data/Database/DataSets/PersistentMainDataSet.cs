@@ -45,6 +45,7 @@ namespace ImgBoard.Shared.Tests.Data.Database.DataSets
         {
             this.UsersIds.Add(this.users.Create("a", "a", "User 1"));
             this.UsersIds.Add(this.users.Create("b", "b", "User 2"));
+            this.UsersIds.Add(this.users.Create("aa", "aa", "User 3"));
 
             this.CategoriesIds.Add(this.categories.Create("Test Category 1"));
             this.CategoriesIds.Add(this.categories.Create("Test Category 2"));
@@ -62,9 +63,9 @@ namespace ImgBoard.Shared.Tests.Data.Database.DataSets
 
             this.ImagesIds.Add(this.images.Create(this.CategoriesIds.ElementAt(0), this.UsersIds.ElementAt(0), "image 8", "image 8 Description", Guid.NewGuid(), "png"));
 
-            this.TagsIds.Add(this.tags.Create("Good"));
-            this.TagsIds.Add(this.tags.Create("Bad"));
-            this.TagsIds.Add(this.tags.Create("Sad"));
+            this.TagsIds.Add(this.tags.Create("Tag Good"));
+            this.TagsIds.Add(this.tags.Create("Tag Bad"));
+            this.TagsIds.Add(this.tags.Create("Tag Sad"));
 
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(0), this.TagsIds.ElementAt(0)));
             this.ImageTagIds.Add(this.imagesTags.Create(this.ImagesIds.ElementAt(3), this.TagsIds.ElementAt(0)));
